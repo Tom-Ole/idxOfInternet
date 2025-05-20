@@ -56,47 +56,49 @@ func GetAllInPages() {
 func CalculatePageWeights() {
 	// Calculate Page weights based on the number of incoming links
 	for _, page := range pages {
-		page.weight = len(page.in)
+		page.weight = len(page.in) + len(page.out)
 	}
 }
 
 func GetPage(url string, depth int) *Page {
 	fmt.Printf("GetPage called for %s at depth %d\n", url, depth)
 
+	// If already visited, return immediately
+	if existing, ok := pages[url]; ok {
+		return existing
+	}
+
+	// Insert placeholder to prevent recursive visits
+	stub := &Page{link: url}
+	pages[url] = stub
+
 	if depth > maxDepth {
-		stub := &Page{link: url}
-		pages[url] = stub
-		fmt.Printf("Created stub page for %s\n", url)
+		fmt.Printf("Max depth reached, returning stub for %s\n", url)
 		return stub
 	}
 
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Printf("Error loading Page %s: %s\n", url, err.Error())
-		return &Page{link: url} // Return stub on error instead of fatal
+		return stub
 	}
 
 	content, err := io.ReadAll(resp.Body)
 	defer resp.Body.Close()
 	if err != nil {
 		log.Printf("Error reading Page %s: %s\n", url, err.Error())
-		return &Page{link: url} // Return stub on error instead of fatal
+		return stub
 	}
 
 	pageInfo := ParsePage(content)
 	fmt.Printf("Parsed page %s, found %d links\n", url, len(pageInfo.links))
 
-	page := &Page{
-		title:  pageInfo.title,
-		link:   url,
-		weight: 1,
-	}
+	// Fill in real values
+	stub.title = pageInfo.title
+	stub.out = getOutPages(pageInfo.links, depth)
+	stub.weight = 1
 
-	pages[url] = page
-	page.out = getOutPages(pageInfo.links, depth)
-	fmt.Printf("Set out pages for %s, length: %d\n", url, len(page.out))
-
-	return page
+	return stub
 }
 
 func PrintPages() {
@@ -105,5 +107,6 @@ func PrintPages() {
 		log.Printf("Title: %s\n", page.title)
 		log.Printf("In len: %d\n", len(page.in))
 		log.Printf("Out len: %d\n", len(page.out))
+		log.Printf("Weight: %d\n", page.weight)
 	}
 }

@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"math/rand"
 	"net/http"
 )
 
@@ -21,25 +20,40 @@ type Edge struct {
 	To   string `json:"to"`
 }
 
-func main() {
-	startUrl := "https://go.dev/blog/error-handling-and-go"
-	root := GetPage(startUrl, 0)
-	pages[startUrl] = root
-	GetAllInPages()
-	CalculatePageWeights()
-	fmt.Print("==========================\n")
-	fmt.Print("==========================\n")
-	PrintPages()
-	fmt.Print("==========================\n")
-	fmt.Printf("Page length: %d \n", len(pages))
-	fmt.Print("==========================\n")
+const loadFromFile = true
 
-	// TODO Handle backend: ....
+func main() {
+	if !loadFromFile {
+		startUrl := "https://go.dev/blog/error-handling-and-go"
+		root := GetPage(startUrl, 0)
+		pages[startUrl] = root
+		GetAllInPages()
+		CalculatePageWeights()
+		fmt.Print("==========================\n")
+		fmt.Print("==========================\n")
+		PrintPages()
+		fmt.Print("==========================\n")
+		fmt.Printf("Page length: %d \n", len(pages))
+		fmt.Print("==========================\n")
+
+		SavePagesToFile("pages.json", pages)
+		fmt.Print("==========================\n")
+
+	} else {
+
+		pagesFromFile, err := ReadPagesFromFile("pages.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		pages = pagesFromFile
+	}
+
 	LayoutPages()
 
 	log.Println("Starting server on http://localhost:8080")
-	http.HandleFunc("/nodes", handleNodes)
-	http.HandleFunc("/edges", handleEdges)
+	http.Handle("/nodes", enableCORS(http.HandlerFunc(handleNodes)))
+	http.Handle("/edges", enableCORS(http.HandlerFunc(handleEdges)))
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
@@ -74,8 +88,33 @@ func writeJSON(w http.ResponseWriter, data any) {
 
 // LayoutPages assigns simple X/Y positions (placeholder for real layout)
 func LayoutPages() {
+	gridSize := 1000.0 // Abstand zwischen Knoten
+	nodesPerRow := 10  // Anzahl Knoten pro Zeile
+	i := 0
+
 	for _, p := range pages {
-		p.x = rand.Float64()*1000 - 500
-		p.y = rand.Float64()*1000 - 500
+		row := i / nodesPerRow
+		col := i % nodesPerRow
+		p.x = float64(col)*gridSize - (float64(nodesPerRow) / 2.0 * gridSize)
+		p.y = float64(row)*gridSize - (float64(len(pages)/nodesPerRow) / 2.0 * gridSize)
+		i++
 	}
+}
+
+func enableCORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Erlaube alle Ursprünge – für Produktion kannst du das gezielt setzen!
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		// OPTIONS-Anfrage sofort beantworten (für Preflight)
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		// Weiterreichen an nächsten Handler
+		next.ServeHTTP(w, r)
+	})
 }
