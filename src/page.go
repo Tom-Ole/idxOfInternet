@@ -12,6 +12,8 @@ type Page struct {
 	link   string
 	in     []*Page
 	out    []*Page
+	x      float64
+	y      float64
 	weight int
 }
 
