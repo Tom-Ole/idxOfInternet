@@ -1,0 +1,107 @@
+package main
+
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+)
+
+type Page struct {
+	title  string
+	link   string
+	in     []*Page
+	out    []*Page
+	weight int
+}
+
+const maxDepth = 1
+
+var pages = make(map[string]*Page)
+
+func getOutPages(links map[string]int, depth int) []*Page {
+	outPages := make([]*Page, 0)
+	fmt.Printf("Processing %d links in getOutPages\n", len(links))
+
+	for link := range links {
+		fmt.Printf("Processing out link: %s\n", link)
+		if p, ok := pages[link]; ok {
+			fmt.Printf("Found existing page for %s\n", link)
+			outPages = append(outPages, p)
+			continue
+		}
+
+		fmt.Printf("Creating new page for %s\n", link)
+		page := GetPage(link, depth+1)
+		fmt.Printf("Created page with link: %s, out length: %d\n", page.link, len(page.out))
+		pages[link] = page
+		outPages = append(outPages, page)
+	}
+	fmt.Printf("Returning %d out pages\n", len(outPages))
+	return outPages
+}
+
+func GetAllInPages() {
+	for _, page := range pages {
+		for _, outPage := range page.out {
+			if ref, ok := pages[outPage.link]; ok {
+				ref.in = append(ref.in, page)
+			}
+		}
+	}
+}
+
+func CalculatePageWeights() {
+	// Calculate Page weights based on the number of incoming links
+	for _, page := range pages {
+		page.weight = len(page.in)
+	}
+}
+
+func GetPage(url string, depth int) *Page {
+	fmt.Printf("GetPage called for %s at depth %d\n", url, depth)
+
+	if depth > maxDepth {
+		stub := &Page{link: url}
+		pages[url] = stub
+		fmt.Printf("Created stub page for %s\n", url)
+		return stub
+	}
+
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Printf("Error loading Page %s: %s\n", url, err.Error())
+		return &Page{link: url} // Return stub on error instead of fatal
+	}
+
+	content, err := io.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	if err != nil {
+		log.Printf("Error reading Page %s: %s\n", url, err.Error())
+		return &Page{link: url} // Return stub on error instead of fatal
+	}
+
+	pageInfo := ParsePage(content)
+	fmt.Printf("Parsed page %s, found %d links\n", url, len(pageInfo.links))
+
+	page := &Page{
+		title:  pageInfo.title,
+		link:   url,
+		weight: 1,
+	}
+
+	pages[url] = page
+	page.out = getOutPages(pageInfo.links, depth)
+	fmt.Printf("Set out pages for %s, length: %d\n", url, len(page.out))
+
+	return page
+}
+
+func PrintPages() {
+	for _, page := range pages {
+		log.Printf("Page %s\n", page.link)
+		log.Printf("Title: %s\n", page.title)
+		log.Printf("In len: %d\n", len(page.in))
+		log.Printf("Out len: %d\n", len(page.out))
+	}
+}
