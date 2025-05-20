@@ -20,7 +20,8 @@ type Edge struct {
 	To   string `json:"to"`
 }
 
-const loadFromFile = true
+const loadFromFile = false
+const maxDepth = 5
 
 func main() {
 	if !loadFromFile {
@@ -46,10 +47,14 @@ func main() {
 			log.Fatal(err)
 		}
 
+		fmt.Printf("Loaded %d pages from file\n", len(pagesFromFile))
+
 		pages = pagesFromFile
 	}
 
 	LayoutPages()
+
+	// PrintPages()
 
 	log.Println("Starting server on http://localhost:8080")
 	http.Handle("/nodes", enableCORS(http.HandlerFunc(handleNodes)))
@@ -86,19 +91,9 @@ func writeJSON(w http.ResponseWriter, data any) {
 	json.NewEncoder(w).Encode(data)
 }
 
-// LayoutPages assigns simple X/Y positions (placeholder for real layout)
 func LayoutPages() {
-	gridSize := 1000.0 // Abstand zwischen Knoten
-	nodesPerRow := 10  // Anzahl Knoten pro Zeile
-	i := 0
+	FruchtermanReingold(pages, 10000, 10000, 1000)
 
-	for _, p := range pages {
-		row := i / nodesPerRow
-		col := i % nodesPerRow
-		p.x = float64(col)*gridSize - (float64(nodesPerRow) / 2.0 * gridSize)
-		p.y = float64(row)*gridSize - (float64(len(pages)/nodesPerRow) / 2.0 * gridSize)
-		i++
-	}
 }
 
 func enableCORS(next http.Handler) http.Handler {

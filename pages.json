@@ -1,1 +1,2510 @@
-{"http://camlistore.org":{},"http://www.google.com/intl/en/policies/privacy/":{},"https://api.stackexchange.com/":{},"https://aviation.stackexchange.com/questions/108604/why-was-the-noseless-sikorsky-s-22-stable-enough-to-fly":{},"https://blender.stackexchange.com/questions/334632/modeling-converging-lampshade-wireframes":{},"https://blog.golang.org/go-brand":{},"https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo\u0026utm_source=twc\u0026utm_medium=web\u0026utm_campaign=ao\u0026utm_content=adsinfo":{},"https://chat.stackoverflow.com/?tab=site\u0026amp;host=stackoverflow.com":{},"https://chat.stackoverflow.com/?tab=site\u0026host=stackoverflow.com":{},"https://chat.stackoverflow.com/rooms/259507/stack-overflow-lobby":{},"https://cloud.google.com/":{},"https://cloud.google.com/appengine":{},"https://cloud.google.com/appengine/docs":{},"https://cloud.google.com/appengine/docs/go/":{},"https://cloud.google.com/architecture":{},"https://cloud.google.com/blog":{},"https://cloud.google.com/contact":{},"https://cloud.google.com/developers":{},"https://cloud.google.com/docs":{},"https://cloud.google.com/docs/access-resources":{},"https://cloud.google.com/docs/ai-ml":{},"https://cloud.google.com/docs/application-development":{},"https://cloud.google.com/docs/application-hosting":{},"https://cloud.google.com/docs/compute-area":{},"https://cloud.google.com/docs/costs-usage":{},"https://cloud.google.com/docs/cross-product-overviews":{},"https://cloud.google.com/docs/data":{},"https://cloud.google.com/docs/databases":{},"https://cloud.google.com/docs/devtools":{},"https://cloud.google.com/docs/dhm-cloud":{},"https://cloud.google.com/docs/generative-ai":{},"https://cloud.google.com/docs/iac":{},"https://cloud.google.com/docs/industry":{},"https://cloud.google.com/docs/migration":{},"https://cloud.google.com/docs/networking":{},"https://cloud.google.com/docs/observability":{},"https://cloud.google.com/docs/security":{},"https://cloud.google.com/docs/storage":{},"https://cloud.google.com/docs/tech-area-overviews":{},"https://cloud.google.com/free":{},"https://cloud.google.com/marketplace/docs":{},"https://cloud.google.com/solutions":{},"https://cloud.google.com/support-hub":{},"https://codegolf.stackexchange.com/questions/279803/reconstruct-your-source-from-separate-punctuation-and-non-punctuation":{},"https://console.cloud.google.com/marketplace":{},"https://cooking.stackexchange.com/questions/130627/why-turn-on-the-oven-at-the-start-of-a-recipe":{},"https://creativecommons.org/licenses/by/4.0/":{},"https://data.stackexchange.com/":{},"https://developers.google.com/":{},"https://developers.google.com/site-policies":{},"https://diy.stackexchange.com/questions/318034/how-would-you-fix-this-bad-circuit-14-gauge-on-a-20-amp":{},"https://docs.github.com":{},"https://docs.github.com/":{},"https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax":{},"https://docs.github.com/site-policy/github-terms/github-terms-of-service":{},"https://docs.github.com/site-policy/privacy-policies/github-privacy-statement":{},"https://economics.stackexchange.com/questions/60380/why-are-there-negative-prices-for-electricity":{},"https://economics.stackexchange.com/questions/60385/is-it-fair-to-attribute-the-2-inflation-to-being-written-into-contracts":{},"https://electronics.stackexchange.com/questions/746290/current-boost-converter":{},"https://electronics.stackexchange.com/questions/746326/how-can-i-make-a-voltage-source-get-a-different-function-depending-on-a-paramete":{},"https://github.blog":{},"https://github.com":{},"https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135":{},"https://github.com/collections":{},"https://github.com/customer-stories":{},"https://github.com/enterprise":{},"https://github.com/enterprise/startups":{},"https://github.com/features":{},"https://github.com/features/actions":{},"https://github.com/features/code-review":{},"https://github.com/features/code-search":{},"https://github.com/features/codespaces":{},"https://github.com/features/copilot":{},"https://github.com/features/discussions":{},"https://github.com/features/issues":{},"https://github.com/features/models":{},"https://github.com/golang":{},"https://github.com/golang/go/issues":{},"https://github.com/golang/go/wiki/Conferences":{},"https://github.com/pricing":{},"https://github.com/readme":{},"https://github.com/resources/whitepapers":{},"https://github.com/security":{},"https://github.com/security/advanced-security":{},"https://github.com/solutions/executive-insights":{},"https://github.com/team":{},"https://github.com/topics":{},"https://github.com/trending":{},"https://github.com/why-github":{},"https://go.dev/":{},"https://go.dev/about#adding-a-package":{},"https://go.dev/about#creating-a-badge":{},"https://go.dev/about#removing-a-package":{},"https://go.dev/blog":{},"https://go.dev/blog/error-handling-and-go":{},"https://go.dev/conduct":{},"https://go.dev/copyright":{},"https://go.dev/dl/":{},"https://go.dev/doc/":{},"https://go.dev/doc/devel/release":{},"https://go.dev/doc/devel/release.html":{},"https://go.dev/doc/effective_go":{},"https://go.dev/help":{},"https://go.dev/learn/":{},"https://go.dev/project":{},"https://go.dev/s/pkgsite-feedback":{},"https://go.dev/security/":{},"https://go.dev/solutions":{},"https://go.dev/solutions#case-studies":{},"https://go.dev/solutions#use-cases":{},"https://go.dev/talks/":{},"https://go.dev/tos":{},"https://golangweekly.com/":{},"https://google.com":{},"https://groups.google.com/g/golang-nuts":{},"https://help.x.com/using-x/x-supported-browsers":{},"https://hermeneutics.stackexchange.com/questions/104375/what-does-jude-mean-that-we-should-hate-garments-stained-spotted-or-polluted-by":{},"https://invite.slack.golangbridge.org/":{},"https://judaism.stackexchange.com/questions/149617/contradictory-words-for-radish-in-hebrew":{},"https://langdev.stackexchange.com/questions/4411/the-square-bracket-dance-declaring-an-array-in-go-java-c-makes-the-bracket":{},"https://learn.go.dev/":{},"https://legal.twitter.com/imprint.html":{},"https://linkedin.com/company/stack-overflow":{},"https://math.stackexchange.com/questions/5066372/do-prime-numbers-have-this-property":{},"https://mathematica.stackexchange.com/questions/312723/seek-mathematica-implementations-of-gaussian-q-distribution-q-exponential-distr":{},"https://mathoverflow.net/questions/492786/are-eigenspaces-continuous":{},"https://mechanics.stackexchange.com/questions/98989/is-it-safe-and-functional-to-turn-off-fuel-from-a-generator-by-turning-off-fuel":{},"https://meta.stackexchange.com/questions/408946/inviting-more-thoughts-do-these-challenges-resonate-beyond-stack-overflow-clo":{},"https://meta.stackexchange.com/questions/408998/two-new-chat-rooms-experiment-geared-towards-new-users":{},"https://meta.stackoverflow.com":{},"https://meta.stackoverflow.com/questions/421831/policy-generative-ai-e-g-chatgpt-is-banned":{},"https://meta.stackoverflow.com/questions/433648/discussions-learnings-and-potential-next-steps":{},"https://partner.github.com":{},"https://philosophy.stackexchange.com/questions/125244/are-primary-sources-required-for-philosophy":{},"https://philosophy.stackexchange.com/questions/125271/how-can-a-being-god-exist-without-spatiality":{},"https://physics.stackexchange.com/questions/849963/sun-turns-blue-when-seen-through-a-crossed-polariser-analyser":{},"https://physics.stackexchange.com/questions/850102/does-the-electron-degeneracy-pressure-alone-prevent-the-gravitational-collapse-i":{},"https://pkg.go.dev":{},"https://pkg.go.dev/about":{},"https://pkg.go.dev/std":{},"https://play.golang.org":{},"https://policies.google.com/technologies/cookies":{},"https://reddit.com/r/golang":{},"https://resources.github.com":{},"https://resources.github.com/learn/pathways":{},"https://skills.github.com":{},"https://stackexchange.com":{},"https://stackexchange.com/questions?tab=hot":{},"https://stackexchange.com/sites":{},"https://stackexchange.com/sites#business":{},"https://stackexchange.com/sites#culturerecreation":{},"https://stackexchange.com/sites#lifearts":{},"https://stackexchange.com/sites#professional":{},"https://stackexchange.com/sites#science":{},"https://stackexchange.com/sites#technology":{},"https://stackoverflow.blog":{},"https://stackoverflow.blog/2025/05/16/salesforce-wants-to-do-for-agentic-ai-what-they-did-for-saas/":{},"https://stackoverflow.blog/2025/05/19/research-roadmap-update-may-2025/":{},"https://stackoverflow.blog/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=blog":{},"https://stackoverflow.blog/contributed?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=so-blog\u0026amp;utm_content=experiment-articles":{},"https://stackoverflow.blog?blb=1":{},"https://stackoverflow.co/":{},"https://stackoverflow.co/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=about-the-company":{},"https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=advertising":{},"https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-advertising":{},"https://stackoverflow.co/advertising/employer-branding/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=talent":{},"https://stackoverflow.co/api-solutions/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=overflow-api":{},"https://stackoverflow.co/company/press/":{},"https://stackoverflow.co/company/work-here/":{},"https://stackoverflow.co/labs/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=labs":{},"https://stackoverflow.co/teams/":{},"https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=teams":{},"https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams":{},"https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams-compact":{},"https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-for-teams":{},"https://stackoverflow.co/teams/ai/?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=top-nav-bar\u0026amp;utm_content=overflowai":{},"https://stackoverflow.com":{},"https://stackoverflow.com/collectives/go":{},"https://stackoverflow.com/help":{},"https://stackoverflow.com/help/licensing":{},"https://stackoverflow.com/jobs/companies?so_medium=stackoverflow\u0026amp;so_source=SiteNav":{},"https://stackoverflow.com/legal":{},"https://stackoverflow.com/legal/cookie-policy":{},"https://stackoverflow.com/legal/privacy-policy":{},"https://stackoverflow.com/legal/terms-of-service/public":{},"https://stackoverflow.com/questions/tagged/go?tab=Newest":{},"https://stackoverflow.com/tags/go":{},"https://stackoverflow.com/users/login?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo":{},"https://stackoverflow.com/users/login?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo":{},"https://stackoverflow.com/users/signup?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo":{},"https://stackoverflow.com/users/signup?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo":{},"https://stackoverflowteams.com/teams/create/free/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams":{},"https://superuser.com/questions/1898998/play-2-audio-files-streams-simultaneously":{},"https://support.github.com?tags=dotcom-footer":{},"https://support.twitter.com/articles/20170514":{},"https://tex.stackexchange.com/questions/742846/multicols-and-tabular-environments-problems":{},"https://tex.stackexchange.com/questions/742875/textup-vs-normaltext-for-descriptive-subscripts-in-physics":{},"https://tour.golang.org":{},"https://twitter.com/golang":{},"https://twitter.com/privacy":{},"https://twitter.com/stackoverflow":{},"https://twitter.com/tos":{},"https://workplace.stackexchange.com/questions/200913/blamed-by-coworkers-in-meeting-any-pitfalls-if-i-send-an-email-with-my-side-of":{},"https://www.apache.org/licenses/LICENSE-2.0":{},"https://www.cloudskillsboost.google/paths":{},"https://www.facebook.com/officialstackoverflow/":{},"https://www.githubstatus.com/":{},"https://www.instagram.com/thestackoverflow":{},"https://www.meetup.com/pro/go":{},"https://www.reddit.com/r/golang/":{},"https://www.twitter.com/golang":{},"https://www.youtube.com/@googlecloudtech":{}}
+{
+  "http://camlistore.org": {
+    "title": "",
+    "link": "http://camlistore.org",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "http://www.google.com/intl/en/policies/privacy/": {
+    "title": "",
+    "link": "http://www.google.com/intl/en/policies/privacy/",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://api.stackexchange.com/": {
+    "title": "",
+    "link": "https://api.stackexchange.com/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://astronomy.stackexchange.com/questions/60158/why-is-estimating-the-age-of-an-individual-star-so-complicated": {
+    "title": "",
+    "link": "https://astronomy.stackexchange.com/questions/60158/why-is-estimating-the-age-of-an-individual-star-so-complicated",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://aviation.stackexchange.com/questions/108604/why-was-the-noseless-sikorsky-s-22-stable-enough-to-fly": {
+    "title": "",
+    "link": "https://aviation.stackexchange.com/questions/108604/why-was-the-noseless-sikorsky-s-22-stable-enough-to-fly",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://blender.stackexchange.com/questions/334632/modeling-converging-lampshade-wireframes": {
+    "title": "",
+    "link": "https://blender.stackexchange.com/questions/334632/modeling-converging-lampshade-wireframes",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://blog.golang.org/go-brand": {
+    "title": "",
+    "link": "https://blog.golang.org/go-brand",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://chat.stackoverflow.com/?tab=site\u0026amp;host=stackoverflow.com": {
+    "title": "",
+    "link": "https://chat.stackoverflow.com/?tab=site\u0026amp;host=stackoverflow.com",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://chat.stackoverflow.com/?tab=site\u0026host=stackoverflow.com": {
+    "title": "",
+    "link": "https://chat.stackoverflow.com/?tab=site\u0026host=stackoverflow.com",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://chat.stackoverflow.com/rooms/259507/stack-overflow-lobby": {
+    "title": "",
+    "link": "https://chat.stackoverflow.com/rooms/259507/stack-overflow-lobby",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://christianity.stackexchange.com/questions/106358/genesis-and-shame": {
+    "title": "",
+    "link": "https://christianity.stackexchange.com/questions/106358/genesis-and-shame",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/": {
+    "title": "",
+    "link": "https://cloud.google.com/",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/appengine": {
+    "title": "",
+    "link": "https://cloud.google.com/appengine",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/appengine/docs": {
+    "title": "",
+    "link": "https://cloud.google.com/appengine/docs",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/appengine/docs/go/": {
+    "title": "Go on Google App Engine \u0026nbsp;|\u0026nbsp; App Engine Documentation \u0026nbsp;|\u0026nbsp; Google Cloud",
+    "link": "https://cloud.google.com/appengine/docs/go/",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go"
+    ],
+    "out": [
+      "https://cloud.google.com/docs/iac",
+      "https://creativecommons.org/licenses/by/4.0/",
+      "https://cloud.google.com/contact",
+      "https://cloud.google.com/developers",
+      "https://cloud.google.com/appengine",
+      "https://developers.google.com/site-policies",
+      "https://cloud.google.com/docs/application-hosting",
+      "https://cloud.google.com/docs/dhm-cloud",
+      "https://cloud.google.com/docs/networking",
+      "https://cloud.google.com/docs/cross-product-overviews",
+      "https://cloud.google.com/docs/access-resources",
+      "https://cloud.google.com/docs/migration",
+      "https://cloud.google.com/architecture",
+      "https://cloud.google.com/blog",
+      "https://cloud.google.com/docs/observability",
+      "https://cloud.google.com/docs/storage",
+      "https://developers.google.com/",
+      "https://console.cloud.google.com/marketplace",
+      "https://cloud.google.com/marketplace/docs",
+      "https://cloud.google.com/support-hub",
+      "https://cloud.google.com/docs/security",
+      "https://cloud.google.com/docs",
+      "https://cloud.google.com/docs/databases",
+      "https://cloud.google.com/free",
+      "https://cloud.google.com/docs/compute-area",
+      "https://cloud.google.com/docs/data",
+      "https://cloud.google.com/docs/devtools",
+      "https://cloud.google.com/docs/costs-usage",
+      "https://cloud.google.com/solutions",
+      "https://www.apache.org/licenses/LICENSE-2.0",
+      "https://cloud.google.com/docs/ai-ml",
+      "https://cloud.google.com/docs/generative-ai",
+      "https://cloud.google.com/",
+      "https://www.cloudskillsboost.google/paths",
+      "https://www.youtube.com/@googlecloudtech",
+      "https://cloud.google.com/appengine/docs",
+      "https://cloud.google.com/docs/tech-area-overviews",
+      "https://cloud.google.com/docs/application-development",
+      "https://cloud.google.com/docs/industry"
+    ],
+    "weight": 40,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/architecture": {
+    "title": "",
+    "link": "https://cloud.google.com/architecture",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/blog": {
+    "title": "",
+    "link": "https://cloud.google.com/blog",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/contact": {
+    "title": "",
+    "link": "https://cloud.google.com/contact",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/developers": {
+    "title": "",
+    "link": "https://cloud.google.com/developers",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs": {
+    "title": "",
+    "link": "https://cloud.google.com/docs",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/access-resources": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/access-resources",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/ai-ml": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/ai-ml",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/application-development": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/application-development",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/application-hosting": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/application-hosting",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/compute-area": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/compute-area",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/costs-usage": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/costs-usage",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/cross-product-overviews": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/cross-product-overviews",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/data": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/data",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/databases": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/databases",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/devtools": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/devtools",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/dhm-cloud": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/dhm-cloud",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/generative-ai": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/generative-ai",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/iac": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/iac",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/industry": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/industry",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/migration": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/migration",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/networking": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/networking",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/observability": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/observability",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/security": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/security",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/storage": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/storage",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/docs/tech-area-overviews": {
+    "title": "",
+    "link": "https://cloud.google.com/docs/tech-area-overviews",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/free": {
+    "title": "",
+    "link": "https://cloud.google.com/free",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/marketplace/docs": {
+    "title": "",
+    "link": "https://cloud.google.com/marketplace/docs",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/solutions": {
+    "title": "",
+    "link": "https://cloud.google.com/solutions",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cloud.google.com/support-hub": {
+    "title": "",
+    "link": "https://cloud.google.com/support-hub",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://codegolf.stackexchange.com/questions/279803/reconstruct-your-source-from-separate-punctuation-and-non-punctuation": {
+    "title": "",
+    "link": "https://codegolf.stackexchange.com/questions/279803/reconstruct-your-source-from-separate-punctuation-and-non-punctuation",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://console.cloud.google.com/marketplace": {
+    "title": "",
+    "link": "https://console.cloud.google.com/marketplace",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cooking.stackexchange.com/questions/130620/how-to-make-a-sweet-with-liquid-center-inside-a-chocolate-or-flavored-icing": {
+    "title": "",
+    "link": "https://cooking.stackexchange.com/questions/130620/how-to-make-a-sweet-with-liquid-center-inside-a-chocolate-or-flavored-icing",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://creativecommons.org/licenses/by/4.0/": {
+    "title": "",
+    "link": "https://creativecommons.org/licenses/by/4.0/",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://crypto.stackexchange.com/questions/115069/an-idea-for-encryption-using-decimal-part-of-nx-for-a-secret-irrational-x": {
+    "title": "",
+    "link": "https://crypto.stackexchange.com/questions/115069/an-idea-for-encryption-using-decimal-part-of-nx-for-a-secret-irrational-x",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cs.opensource.google/go/go": {
+    "title": "",
+    "link": "https://cs.opensource.google/go/go",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://cs.opensource.google/go/go/+/go1.24.3:src/go.mod": {
+    "title": "",
+    "link": "https://cs.opensource.google/go/go/+/go1.24.3:src/go.mod",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://data.stackexchange.com/": {
+    "title": "",
+    "link": "https://data.stackexchange.com/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://developers.google.com/": {
+    "title": "",
+    "link": "https://developers.google.com/",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://developers.google.com/site-policies": {
+    "title": "",
+    "link": "https://developers.google.com/site-policies",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://docs.github.com": {
+    "title": "",
+    "link": "https://docs.github.com",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://docs.github.com/": {
+    "title": "",
+    "link": "https://docs.github.com/",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax": {
+    "title": "",
+    "link": "https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://docs.github.com/site-policy/github-terms/github-terms-of-service": {
+    "title": "",
+    "link": "https://docs.github.com/site-policy/github-terms/github-terms-of-service",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement": {
+    "title": "",
+    "link": "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://electronics.stackexchange.com/questions/746350/bidirectional-tvs-diode-symbol-confusion-aa-vs-kk": {
+    "title": "",
+    "link": "https://electronics.stackexchange.com/questions/746350/bidirectional-tvs-diode-symbol-confusion-aa-vs-kk",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://gaming.stackexchange.com/questions/412229/what-is-the-first-video-game-boss-to-have-a-second-phase": {
+    "title": "",
+    "link": "https://gaming.stackexchange.com/questions/412229/what-is-the-first-video-game-boss-to-have-a-second-phase",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.blog": {
+    "title": "",
+    "link": "https://github.blog",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com": {
+    "title": "",
+    "link": "https://github.com",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135": {
+    "title": "go4/jsonconfig/eval.go at 03efcb870d84809319ea509714dd6d19a1498483 · go4org/go4 · GitHub",
+    "link": "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go"
+    ],
+    "out": [
+      "https://github.com/readme",
+      "https://docs.github.com/",
+      "https://support.github.com?tags=dotcom-footer",
+      "https://github.com/features/code-search",
+      "https://github.com/why-github",
+      "https://github.com/enterprise",
+      "https://github.com/collections",
+      "https://github.com/features/issues",
+      "https://github.blog",
+      "https://resources.github.com",
+      "https://github.com/pricing",
+      "https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax",
+      "https://github.com/security",
+      "https://github.com/features/copilot",
+      "https://resources.github.com/learn/pathways",
+      "https://github.com/topics",
+      "https://github.com/features/code-review",
+      "https://skills.github.com",
+      "https://github.com/resources/whitepapers",
+      "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement",
+      "https://github.com/security/advanced-security",
+      "https://github.com/customer-stories",
+      "https://github.com/trending",
+      "https://docs.github.com/site-policy/github-terms/github-terms-of-service",
+      "https://www.githubstatus.com/",
+      "https://github.com/features/actions",
+      "https://github.com/features/discussions",
+      "https://github.com/features/models",
+      "https://github.com/features/codespaces",
+      "https://github.com/team",
+      "https://github.com/enterprise/startups",
+      "https://partner.github.com",
+      "https://github.com",
+      "https://github.com/features",
+      "https://docs.github.com",
+      "https://github.com/solutions/executive-insights"
+    ],
+    "weight": 37,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/collections": {
+    "title": "",
+    "link": "https://github.com/collections",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/customer-stories": {
+    "title": "",
+    "link": "https://github.com/customer-stories",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/enterprise": {
+    "title": "",
+    "link": "https://github.com/enterprise",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/enterprise/startups": {
+    "title": "",
+    "link": "https://github.com/enterprise/startups",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features": {
+    "title": "",
+    "link": "https://github.com/features",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/actions": {
+    "title": "",
+    "link": "https://github.com/features/actions",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/code-review": {
+    "title": "",
+    "link": "https://github.com/features/code-review",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/code-search": {
+    "title": "",
+    "link": "https://github.com/features/code-search",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/codespaces": {
+    "title": "",
+    "link": "https://github.com/features/codespaces",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/copilot": {
+    "title": "",
+    "link": "https://github.com/features/copilot",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/discussions": {
+    "title": "",
+    "link": "https://github.com/features/discussions",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/issues": {
+    "title": "",
+    "link": "https://github.com/features/issues",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/features/models": {
+    "title": "",
+    "link": "https://github.com/features/models",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/golang": {
+    "title": "",
+    "link": "https://github.com/golang",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/golang/go/issues": {
+    "title": "",
+    "link": "https://github.com/golang/go/issues",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/golang/go/wiki/Conferences": {
+    "title": "",
+    "link": "https://github.com/golang/go/wiki/Conferences",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/pricing": {
+    "title": "",
+    "link": "https://github.com/pricing",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/readme": {
+    "title": "",
+    "link": "https://github.com/readme",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/resources/whitepapers": {
+    "title": "",
+    "link": "https://github.com/resources/whitepapers",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/security": {
+    "title": "",
+    "link": "https://github.com/security",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/security/advanced-security": {
+    "title": "",
+    "link": "https://github.com/security/advanced-security",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/solutions/executive-insights": {
+    "title": "",
+    "link": "https://github.com/solutions/executive-insights",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/team": {
+    "title": "",
+    "link": "https://github.com/team",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/topics": {
+    "title": "",
+    "link": "https://github.com/topics",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/trending": {
+    "title": "",
+    "link": "https://github.com/trending",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://github.com/why-github": {
+    "title": "",
+    "link": "https://github.com/why-github",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/": {
+    "title": "",
+    "link": "https://go.dev/",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/blog": {
+    "title": "",
+    "link": "https://go.dev/blog",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/blog/error-handling-and-go": {
+    "title": "Error handling and Go - The Go Programming Language",
+    "link": "https://go.dev/blog/error-handling-and-go",
+    "in": [],
+    "out": [
+      "https://pkg.go.dev/std",
+      "https://www.reddit.com/r/golang/",
+      "https://invite.slack.golangbridge.org/",
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135",
+      "https://pkg.go.dev/about",
+      "http://www.google.com/intl/en/policies/privacy/",
+      "https://pkg.go.dev",
+      "https://groups.google.com/g/golang-nuts",
+      "https://twitter.com/golang",
+      "http://camlistore.org",
+      "https://www.twitter.com/golang",
+      "https://reddit.com/r/golang",
+      "https://google.com",
+      "https://www.meetup.com/pro/go",
+      "https://stackoverflow.com/questions/tagged/go?tab=Newest",
+      "https://github.com/golang/go/issues",
+      "https://github.com/golang",
+      "https://stackoverflow.com/tags/go",
+      "https://cloud.google.com/appengine/docs/go/",
+      "https://golangweekly.com/",
+      "https://policies.google.com/technologies/cookies"
+    ],
+    "weight": 21,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/conduct": {
+    "title": "",
+    "link": "https://go.dev/conduct",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/copyright": {
+    "title": "",
+    "link": "https://go.dev/copyright",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/dl/": {
+    "title": "",
+    "link": "https://go.dev/dl/",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/doc/": {
+    "title": "",
+    "link": "https://go.dev/doc/",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/doc/devel/release": {
+    "title": "",
+    "link": "https://go.dev/doc/devel/release",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/doc/devel/release.html": {
+    "title": "",
+    "link": "https://go.dev/doc/devel/release.html",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/doc/effective_go": {
+    "title": "",
+    "link": "https://go.dev/doc/effective_go",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/help": {
+    "title": "",
+    "link": "https://go.dev/help",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/learn/": {
+    "title": "",
+    "link": "https://go.dev/learn/",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/project": {
+    "title": "",
+    "link": "https://go.dev/project",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/s/pkgsite-feedback": {
+    "title": "",
+    "link": "https://go.dev/s/pkgsite-feedback",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/security/": {
+    "title": "",
+    "link": "https://go.dev/security/",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/security/policy": {
+    "title": "",
+    "link": "https://go.dev/security/policy",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/solutions": {
+    "title": "",
+    "link": "https://go.dev/solutions",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/solutions#case-studies": {
+    "title": "",
+    "link": "https://go.dev/solutions#case-studies",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/solutions#use-cases": {
+    "title": "",
+    "link": "https://go.dev/solutions#use-cases",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/talks/": {
+    "title": "",
+    "link": "https://go.dev/talks/",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://go.dev/tos": {
+    "title": "",
+    "link": "https://go.dev/tos",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://golangweekly.com/": {
+    "title": "",
+    "link": "https://golangweekly.com/",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://google.com": {
+    "title": "",
+    "link": "https://google.com",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://groups.google.com/g/golang-nuts": {
+    "title": "",
+    "link": "https://groups.google.com/g/golang-nuts",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://history.stackexchange.com/questions/77802/what-where-did-suoli-%e7%90%90%e9%87%8c-refer-to-sri-lanka-southern-india-somewhere-in-t": {
+    "title": "",
+    "link": "https://history.stackexchange.com/questions/77802/what-where-did-suoli-%e7%90%90%e9%87%8c-refer-to-sri-lanka-southern-india-somewhere-in-t",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://invite.slack.golangbridge.org/": {
+    "title": "",
+    "link": "https://invite.slack.golangbridge.org/",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://langdev.stackexchange.com/questions/4400/utf-32-worth-it-for-the-string-data-type": {
+    "title": "",
+    "link": "https://langdev.stackexchange.com/questions/4400/utf-32-worth-it-for-the-string-data-type",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://learn.go.dev/": {
+    "title": "",
+    "link": "https://learn.go.dev/",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://linkedin.com/company/stack-overflow": {
+    "title": "",
+    "link": "https://linkedin.com/company/stack-overflow",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://math.stackexchange.com/questions/5066690/can-i-get-some-insight-on-this-integration-method-i-made": {
+    "title": "",
+    "link": "https://math.stackexchange.com/questions/5066690/can-i-get-some-insight-on-this-integration-method-i-made",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://mathematica.stackexchange.com/questions/312723/seek-mathematica-implementations-of-gaussian-q-distribution-q-exponential-distr": {
+    "title": "",
+    "link": "https://mathematica.stackexchange.com/questions/312723/seek-mathematica-implementations-of-gaussian-q-distribution-q-exponential-distr",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://mathoverflow.net/questions/492786/are-eigenspaces-continuous": {
+    "title": "",
+    "link": "https://mathoverflow.net/questions/492786/are-eigenspaces-continuous",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://meta.stackexchange.com/questions/408946/inviting-more-thoughts-do-these-challenges-resonate-beyond-stack-overflow-clo": {
+    "title": "",
+    "link": "https://meta.stackexchange.com/questions/408946/inviting-more-thoughts-do-these-challenges-resonate-beyond-stack-overflow-clo",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://meta.stackexchange.com/questions/408998/two-new-chat-rooms-experiment-geared-towards-new-users": {
+    "title": "",
+    "link": "https://meta.stackexchange.com/questions/408998/two-new-chat-rooms-experiment-geared-towards-new-users",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://meta.stackoverflow.com": {
+    "title": "",
+    "link": "https://meta.stackoverflow.com",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://meta.stackoverflow.com/questions/421831/policy-generative-ai-e-g-chatgpt-is-banned": {
+    "title": "",
+    "link": "https://meta.stackoverflow.com/questions/421831/policy-generative-ai-e-g-chatgpt-is-banned",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://meta.stackoverflow.com/questions/433648/discussions-learnings-and-potential-next-steps": {
+    "title": "",
+    "link": "https://meta.stackoverflow.com/questions/433648/discussions-learnings-and-potential-next-steps",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://movies.stackexchange.com/questions/125367/was-the-ending-of-twin-peaks-s03-episode-17-filmed-together-with-fire-walk-with": {
+    "title": "",
+    "link": "https://movies.stackexchange.com/questions/125367/was-the-ending-of-twin-peaks-s03-episode-17-filmed-together-with-fire-walk-with",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://music.stackexchange.com/questions/139643/should-we-follow-to-the-letter-what-is-written-in-the-score-of-jesu-joy-of-man": {
+    "title": "",
+    "link": "https://music.stackexchange.com/questions/139643/should-we-follow-to-the-letter-what-is-written-in-the-score-of-jesu-joy-of-man",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://partner.github.com": {
+    "title": "",
+    "link": "https://partner.github.com",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://philosophy.stackexchange.com/questions/125273/modus-ponens-and-a-hilbert-style-system-for-kleenes-3-valued-logic": {
+    "title": "",
+    "link": "https://philosophy.stackexchange.com/questions/125273/modus-ponens-and-a-hilbert-style-system-for-kleenes-3-valued-logic",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://pkg.go.dev": {
+    "title": "",
+    "link": "https://pkg.go.dev",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://pkg.go.dev/about": {
+    "title": "",
+    "link": "https://pkg.go.dev/about",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://pkg.go.dev/std": {
+    "title": "Standard library - Go Packages",
+    "link": "https://pkg.go.dev/std",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [
+      "https://go.dev/doc/devel/release",
+      "https://go.dev/conduct",
+      "https://go.dev/copyright",
+      "https://policies.google.com/technologies/cookies",
+      "https://go.dev/",
+      "https://go.dev/solutions#case-studies",
+      "https://twitter.com/golang",
+      "https://go.dev/s/pkgsite-feedback",
+      "https://go.dev/learn/",
+      "https://www.twitter.com/golang",
+      "https://go.dev/talks/",
+      "https://invite.slack.golangbridge.org/",
+      "https://cs.opensource.google/go/go",
+      "https://golangweekly.com/",
+      "https://stackoverflow.com/questions/tagged/go?tab=Newest",
+      "https://go.dev/solutions#use-cases",
+      "https://github.com/golang/go/wiki/Conferences",
+      "https://go.dev/blog",
+      "https://go.dev/security/policy",
+      "https://tour.golang.org",
+      "https://go.dev/security/",
+      "https://www.meetup.com/pro/go",
+      "https://go.dev/help",
+      "https://github.com/golang",
+      "https://stackoverflow.com/collectives/go",
+      "https://go.dev/solutions",
+      "https://pkg.go.dev",
+      "https://blog.golang.org/go-brand",
+      "https://pkg.go.dev/std",
+      "https://www.reddit.com/r/golang/",
+      "https://cs.opensource.google/go/go/+/go1.24.3:src/go.mod",
+      "https://learn.go.dev/",
+      "https://go.dev/project",
+      "https://reddit.com/r/golang",
+      "http://www.google.com/intl/en/policies/privacy/",
+      "https://google.com",
+      "https://groups.google.com/g/golang-nuts",
+      "https://play.golang.org",
+      "https://pkg.go.dev/about",
+      "https://go.dev/dl/",
+      "https://github.com/golang/go/issues",
+      "https://go.dev/doc/devel/release.html",
+      "https://go.dev/tos",
+      "https://go.dev/doc/effective_go",
+      "https://go.dev/doc/"
+    ],
+    "weight": 47,
+    "x": 0,
+    "y": 0
+  },
+  "https://play.golang.org": {
+    "title": "",
+    "link": "https://play.golang.org",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://policies.google.com/technologies/cookies": {
+    "title": "",
+    "link": "https://policies.google.com/technologies/cookies",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://reddit.com/r/golang": {
+    "title": "",
+    "link": "https://reddit.com/r/golang",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://resources.github.com": {
+    "title": "",
+    "link": "https://resources.github.com",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://resources.github.com/learn/pathways": {
+    "title": "",
+    "link": "https://resources.github.com/learn/pathways",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://skills.github.com": {
+    "title": "",
+    "link": "https://skills.github.com",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com": {
+    "title": "",
+    "link": "https://stackexchange.com",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/questions?tab=hot": {
+    "title": "",
+    "link": "https://stackexchange.com/questions?tab=hot",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/sites": {
+    "title": "",
+    "link": "https://stackexchange.com/sites",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/sites#business": {
+    "title": "",
+    "link": "https://stackexchange.com/sites#business",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/sites#culturerecreation": {
+    "title": "",
+    "link": "https://stackexchange.com/sites#culturerecreation",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/sites#lifearts": {
+    "title": "",
+    "link": "https://stackexchange.com/sites#lifearts",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/sites#professional": {
+    "title": "",
+    "link": "https://stackexchange.com/sites#professional",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/sites#science": {
+    "title": "",
+    "link": "https://stackexchange.com/sites#science",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackexchange.com/sites#technology": {
+    "title": "",
+    "link": "https://stackexchange.com/sites#technology",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.blog": {
+    "title": "",
+    "link": "https://stackoverflow.blog",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.blog/2025/05/16/salesforce-wants-to-do-for-agentic-ai-what-they-did-for-saas/": {
+    "title": "",
+    "link": "https://stackoverflow.blog/2025/05/16/salesforce-wants-to-do-for-agentic-ai-what-they-did-for-saas/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.blog/2025/05/19/research-roadmap-update-may-2025/": {
+    "title": "",
+    "link": "https://stackoverflow.blog/2025/05/19/research-roadmap-update-may-2025/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.blog/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=blog": {
+    "title": "",
+    "link": "https://stackoverflow.blog/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=blog",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.blog/contributed?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=so-blog\u0026amp;utm_content=experiment-articles": {
+    "title": "",
+    "link": "https://stackoverflow.blog/contributed?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=so-blog\u0026amp;utm_content=experiment-articles",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.blog?blb=1": {
+    "title": "",
+    "link": "https://stackoverflow.blog?blb=1",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/": {
+    "title": "",
+    "link": "https://stackoverflow.co/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=about-the-company": {
+    "title": "",
+    "link": "https://stackoverflow.co/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=about-the-company",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=advertising": {
+    "title": "",
+    "link": "https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=advertising",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-advertising": {
+    "title": "",
+    "link": "https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-advertising",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/advertising/employer-branding/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=talent": {
+    "title": "",
+    "link": "https://stackoverflow.co/advertising/employer-branding/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=talent",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/api-solutions/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=overflow-api": {
+    "title": "",
+    "link": "https://stackoverflow.co/api-solutions/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=overflow-api",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/company/press/": {
+    "title": "",
+    "link": "https://stackoverflow.co/company/press/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/company/work-here/": {
+    "title": "",
+    "link": "https://stackoverflow.co/company/work-here/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/labs/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=labs": {
+    "title": "",
+    "link": "https://stackoverflow.co/labs/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=labs",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/teams/": {
+    "title": "",
+    "link": "https://stackoverflow.co/teams/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=teams": {
+    "title": "",
+    "link": "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=teams",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams": {
+    "title": "",
+    "link": "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams-compact": {
+    "title": "",
+    "link": "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams-compact",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-for-teams": {
+    "title": "",
+    "link": "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-for-teams",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.co/teams/ai/?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=top-nav-bar\u0026amp;utm_content=overflowai": {
+    "title": "",
+    "link": "https://stackoverflow.co/teams/ai/?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=top-nav-bar\u0026amp;utm_content=overflowai",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com": {
+    "title": "",
+    "link": "https://stackoverflow.com",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/collectives/go": {
+    "title": "",
+    "link": "https://stackoverflow.com/collectives/go",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/help": {
+    "title": "",
+    "link": "https://stackoverflow.com/help",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/help/licensing": {
+    "title": "",
+    "link": "https://stackoverflow.com/help/licensing",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/jobs/companies?so_medium=stackoverflow\u0026amp;so_source=SiteNav": {
+    "title": "",
+    "link": "https://stackoverflow.com/jobs/companies?so_medium=stackoverflow\u0026amp;so_source=SiteNav",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/legal": {
+    "title": "",
+    "link": "https://stackoverflow.com/legal",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/legal/cookie-policy": {
+    "title": "",
+    "link": "https://stackoverflow.com/legal/cookie-policy",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/legal/privacy-policy": {
+    "title": "",
+    "link": "https://stackoverflow.com/legal/privacy-policy",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/legal/terms-of-service/public": {
+    "title": "",
+    "link": "https://stackoverflow.com/legal/terms-of-service/public",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/questions/tagged/go?tab=Newest": {
+    "title": "",
+    "link": "https://stackoverflow.com/questions/tagged/go?tab=Newest",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/tags/go": {
+    "title": "Newest \u0026#39;go\u0026#39; Questions - Stack Overflow",
+    "link": "https://stackoverflow.com/tags/go",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go"
+    ],
+    "out": [
+      "https://christianity.stackexchange.com/questions/106358/genesis-and-shame",
+      "https://worldbuilding.stackexchange.com/questions/266537/stop-electric-motor-no-wireless-communication-nor-software-hacking-wirelessly",
+      "https://gaming.stackexchange.com/questions/412229/what-is-the-first-video-game-boss-to-have-a-second-phase",
+      "https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=advertising",
+      "https://chat.stackoverflow.com/?tab=site\u0026amp;host=stackoverflow.com",
+      "https://stackoverflow.com/users/signup?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+      "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams-compact",
+      "https://math.stackexchange.com/questions/5066690/can-i-get-some-insight-on-this-integration-method-i-made",
+      "https://mathematica.stackexchange.com/questions/312723/seek-mathematica-implementations-of-gaussian-q-distribution-q-exponential-distr",
+      "https://workplace.stackexchange.com/questions/200909/best-response-to-servant-of-god-listed-on-resume",
+      "https://stackoverflow.co/company/work-here/",
+      "https://stackexchange.com/sites#professional",
+      "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams",
+      "https://stackoverflow.com/help",
+      "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-for-teams",
+      "https://aviation.stackexchange.com/questions/108604/why-was-the-noseless-sikorsky-s-22-stable-enough-to-fly",
+      "https://stackexchange.com/sites#culturerecreation",
+      "https://stackexchange.com/sites#business",
+      "https://data.stackexchange.com/",
+      "https://stackoverflow.com/users/login?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+      "https://stackexchange.com/questions?tab=hot",
+      "https://codegolf.stackexchange.com/questions/279803/reconstruct-your-source-from-separate-punctuation-and-non-punctuation",
+      "https://crypto.stackexchange.com/questions/115069/an-idea-for-encryption-using-decimal-part-of-nx-for-a-secret-irrational-x",
+      "https://chat.stackoverflow.com/?tab=site\u0026host=stackoverflow.com",
+      "https://stackoverflow.com/legal/cookie-policy",
+      "https://stackexchange.com/sites#technology",
+      "https://webmasters.stackexchange.com/questions/146882/audience-manager-in-google-ads-looks-to-be-wildly-off",
+      "https://stackoverflow.com/legal/privacy-policy",
+      "https://stackexchange.com/sites#science",
+      "https://superuser.com/questions/1899000/how-to-install-all-program-files-into-one-place",
+      "https://stackexchange.com",
+      "https://stackoverflow.blog?blb=1",
+      "https://twitter.com/stackoverflow",
+      "https://stackoverflow.co/teams/",
+      "https://stackoverflow.com",
+      "https://stackoverflow.blog/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=blog",
+      "https://blender.stackexchange.com/questions/334632/modeling-converging-lampshade-wireframes",
+      "https://tex.stackexchange.com/questions/742924/using-lstlisting-or-verbatim-environment-in-custom-command",
+      "https://stackexchange.com/sites#lifearts",
+      "https://www.facebook.com/officialstackoverflow/",
+      "https://meta.stackoverflow.com",
+      "https://chat.stackoverflow.com/rooms/259507/stack-overflow-lobby",
+      "https://meta.stackoverflow.com/questions/433648/discussions-learnings-and-potential-next-steps",
+      "https://astronomy.stackexchange.com/questions/60158/why-is-estimating-the-age-of-an-individual-star-so-complicated",
+      "https://philosophy.stackexchange.com/questions/125273/modus-ponens-and-a-hilbert-style-system-for-kleenes-3-valued-logic",
+      "https://stackoverflow.co/api-solutions/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=overflow-api",
+      "https://meta.stackexchange.com/questions/408946/inviting-more-thoughts-do-these-challenges-resonate-beyond-stack-overflow-clo",
+      "https://music.stackexchange.com/questions/139643/should-we-follow-to-the-letter-what-is-written-in-the-score-of-jesu-joy-of-man",
+      "https://langdev.stackexchange.com/questions/4400/utf-32-worth-it-for-the-string-data-type",
+      "https://stackoverflow.com/legal/terms-of-service/public",
+      "https://api.stackexchange.com/",
+      "https://stackoverflow.com/jobs/companies?so_medium=stackoverflow\u0026amp;so_source=SiteNav",
+      "https://travel.stackexchange.com/questions/196963/power-for-cpap-on-jetblue-boston-to-ams-flight",
+      "https://stackoverflow.com/legal",
+      "https://stackoverflow.com/help/licensing",
+      "https://superuser.com/questions/1898998/play-2-audio-files-streams-simultaneously",
+      "https://stackoverflow.blog",
+      "https://stackoverflow.co/",
+      "https://stackoverflow.co/teams/ai/?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=top-nav-bar\u0026amp;utm_content=overflowai",
+      "https://stackexchange.com/sites",
+      "https://stackoverflow.co/teams/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=teams",
+      "https://stackoverflow.co/company/press/",
+      "https://stackoverflow.com/users/signup?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+      "https://stackoverflow.blog/2025/05/16/salesforce-wants-to-do-for-agentic-ai-what-they-did-for-saas/",
+      "https://electronics.stackexchange.com/questions/746350/bidirectional-tvs-diode-symbol-confusion-aa-vs-kk",
+      "https://stackoverflow.co/advertising/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=stack-overflow-advertising",
+      "https://stackoverflow.blog/2025/05/19/research-roadmap-update-may-2025/",
+      "https://cooking.stackexchange.com/questions/130620/how-to-make-a-sweet-with-liquid-center-inside-a-chocolate-or-flavored-icing",
+      "https://movies.stackexchange.com/questions/125367/was-the-ending-of-twin-peaks-s03-episode-17-filmed-together-with-fire-walk-with",
+      "https://stackoverflow.co/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=about-the-company",
+      "https://stackoverflow.com/users/login?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+      "https://meta.stackexchange.com/questions/408998/two-new-chat-rooms-experiment-geared-towards-new-users",
+      "https://meta.stackoverflow.com/questions/421831/policy-generative-ai-e-g-chatgpt-is-banned",
+      "https://history.stackexchange.com/questions/77802/what-where-did-suoli-%e7%90%90%e9%87%8c-refer-to-sri-lanka-southern-india-somewhere-in-t",
+      "https://mathoverflow.net/questions/492786/are-eigenspaces-continuous",
+      "https://www.instagram.com/thestackoverflow",
+      "https://stackoverflow.co/labs/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=top-nav\u0026utm_content=labs",
+      "https://stackoverflow.co/advertising/employer-branding/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=footer\u0026utm_content=talent",
+      "https://linkedin.com/company/stack-overflow",
+      "https://stackoverflow.blog/contributed?utm_medium=referral\u0026amp;utm_source=stackoverflow-community\u0026amp;utm_campaign=so-blog\u0026amp;utm_content=experiment-articles",
+      "https://stackoverflowteams.com/teams/create/free/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams"
+    ],
+    "weight": 82,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/users/login?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo": {
+    "title": "",
+    "link": "https://stackoverflow.com/users/login?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/users/login?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo": {
+    "title": "",
+    "link": "https://stackoverflow.com/users/login?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/users/signup?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo": {
+    "title": "",
+    "link": "https://stackoverflow.com/users/signup?ssrc=head\u0026returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflow.com/users/signup?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo": {
+    "title": "",
+    "link": "https://stackoverflow.com/users/signup?ssrc=site_switcher\u0026amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags%2fgo",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://stackoverflowteams.com/teams/create/free/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams": {
+    "title": "",
+    "link": "https://stackoverflowteams.com/teams/create/free/?utm_medium=referral\u0026utm_source=stackoverflow-community\u0026utm_campaign=side-bar\u0026utm_content=explore-teams",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://superuser.com/questions/1898998/play-2-audio-files-streams-simultaneously": {
+    "title": "",
+    "link": "https://superuser.com/questions/1898998/play-2-audio-files-streams-simultaneously",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://superuser.com/questions/1899000/how-to-install-all-program-files-into-one-place": {
+    "title": "",
+    "link": "https://superuser.com/questions/1899000/how-to-install-all-program-files-into-one-place",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://support.github.com?tags=dotcom-footer": {
+    "title": "",
+    "link": "https://support.github.com?tags=dotcom-footer",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://tex.stackexchange.com/questions/742924/using-lstlisting-or-verbatim-environment-in-custom-command": {
+    "title": "",
+    "link": "https://tex.stackexchange.com/questions/742924/using-lstlisting-or-verbatim-environment-in-custom-command",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://tour.golang.org": {
+    "title": "",
+    "link": "https://tour.golang.org",
+    "in": [
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://travel.stackexchange.com/questions/196963/power-for-cpap-on-jetblue-boston-to-ams-flight": {
+    "title": "",
+    "link": "https://travel.stackexchange.com/questions/196963/power-for-cpap-on-jetblue-boston-to-ams-flight",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://twitter.com/golang": {
+    "title": "",
+    "link": "https://twitter.com/golang",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://twitter.com/stackoverflow": {
+    "title": "",
+    "link": "https://twitter.com/stackoverflow",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://webmasters.stackexchange.com/questions/146882/audience-manager-in-google-ads-looks-to-be-wildly-off": {
+    "title": "",
+    "link": "https://webmasters.stackexchange.com/questions/146882/audience-manager-in-google-ads-looks-to-be-wildly-off",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://workplace.stackexchange.com/questions/200909/best-response-to-servant-of-god-listed-on-resume": {
+    "title": "",
+    "link": "https://workplace.stackexchange.com/questions/200909/best-response-to-servant-of-god-listed-on-resume",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://worldbuilding.stackexchange.com/questions/266537/stop-electric-motor-no-wireless-communication-nor-software-hacking-wirelessly": {
+    "title": "",
+    "link": "https://worldbuilding.stackexchange.com/questions/266537/stop-electric-motor-no-wireless-communication-nor-software-hacking-wirelessly",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.apache.org/licenses/LICENSE-2.0": {
+    "title": "",
+    "link": "https://www.apache.org/licenses/LICENSE-2.0",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.cloudskillsboost.google/paths": {
+    "title": "",
+    "link": "https://www.cloudskillsboost.google/paths",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.facebook.com/officialstackoverflow/": {
+    "title": "",
+    "link": "https://www.facebook.com/officialstackoverflow/",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.githubstatus.com/": {
+    "title": "",
+    "link": "https://www.githubstatus.com/",
+    "in": [
+      "https://github.com/camlistore/go4/blob/03efcb870d84809319ea509714dd6d19a1498483/jsonconfig/eval.go#L123-L135"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.instagram.com/thestackoverflow": {
+    "title": "",
+    "link": "https://www.instagram.com/thestackoverflow",
+    "in": [
+      "https://stackoverflow.com/tags/go"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.meetup.com/pro/go": {
+    "title": "",
+    "link": "https://www.meetup.com/pro/go",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.reddit.com/r/golang/": {
+    "title": "",
+    "link": "https://www.reddit.com/r/golang/",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.twitter.com/golang": {
+    "title": "",
+    "link": "https://www.twitter.com/golang",
+    "in": [
+      "https://go.dev/blog/error-handling-and-go",
+      "https://pkg.go.dev/std"
+    ],
+    "out": [],
+    "weight": 2,
+    "x": 0,
+    "y": 0
+  },
+  "https://www.youtube.com/@googlecloudtech": {
+    "title": "",
+    "link": "https://www.youtube.com/@googlecloudtech",
+    "in": [
+      "https://cloud.google.com/appengine/docs/go/"
+    ],
+    "out": [],
+    "weight": 1,
+    "x": 0,
+    "y": 0
+  }
+}

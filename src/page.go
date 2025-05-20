@@ -17,8 +17,6 @@ type Page struct {
 	weight int
 }
 
-const maxDepth = 1
-
 var pages = make(map[string]*Page)
 
 func getOutPages(links map[string]int, depth int) []*Page {
