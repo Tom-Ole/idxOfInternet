@@ -213,7 +213,7 @@
                     id: 'edges',
                     data: processedEdges,
                     getPath: d => d.path,
-                    getWidth: 0.2,
+                    getWidth: 0.5,
                     getColor: [120, 120, 180],
                     pickable: true,
                     onHover: info => {
@@ -233,7 +233,7 @@
                     id: 'nodes',
                     data: nodes,
                     getPosition: d => [d.x, d.y],
-                    getRadius: d => 5 + Math.sqrt(d.weight || 1) * 3,
+                    getRadius: d => (5 + Math.sqrt(d.weight || 1) * 3),
                     getFillColor: [0, 128, 255],
                     getLineColor: [255, 255, 255],
                     lineWidthMinPixels: 1,

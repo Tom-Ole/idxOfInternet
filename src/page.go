@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 )
 
 type Page struct {
@@ -54,7 +55,7 @@ func GetAllInPages() {
 func CalculatePageWeights() {
 	// Calculate Page weights based on the number of incoming links
 	for _, page := range pages {
-		page.weight = len(page.in) + len(page.out)
+		page.weight = (len(page.in) + len(page.out)) * 2
 	}
 }
 
@@ -75,16 +76,23 @@ func GetPage(url string, depth int) *Page {
 		return stub
 	}
 
-	resp, err := http.Get(url)
+	client := http.Client{Timeout: 8 * time.Second}
+	resp, err := client.Get(url)
+
 	if err != nil {
 		log.Printf("Error loading Page %s: %s\n", url, err.Error())
 		return stub
 	}
 
 	content, err := io.ReadAll(resp.Body)
-	defer resp.Body.Close()
 	if err != nil {
 		log.Printf("Error reading Page %s: %s\n", url, err.Error())
+		return stub
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		log.Printf("Skipping %s due to HTTP status %d\n", url, resp.StatusCode)
 		return stub
 	}
 

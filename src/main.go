@@ -21,11 +21,11 @@ type Edge struct {
 }
 
 const loadFromFile = false
-const maxDepth = 5
+const maxDepth = 3
 
 func main() {
 	if !loadFromFile {
-		startUrl := "https://go.dev/blog/error-handling-and-go"
+		startUrl := "https://de.wikipedia.org/wiki/Sex"
 		root := GetPage(startUrl, 0)
 		pages[startUrl] = root
 		GetAllInPages()
@@ -37,10 +37,20 @@ func main() {
 		fmt.Printf("Page length: %d \n", len(pages))
 		fmt.Print("==========================\n")
 
+		fmt.Print("==========================\n")
+		fmt.Printf("Preprocess Pages %d \n", len(pages))
+
+		cleaned := PreprocessPages(pages)
+		pages = cleaned
+		fmt.Print("==========================\n")
+
 		SavePagesToFile("pages.json", pages)
 		fmt.Print("==========================\n")
 
 	} else {
+		fmt.Print("==========================\n")
+		fmt.Printf("Read Page from file: %s \n", "pages.json")
+		fmt.Print("==========================\n")
 
 		pagesFromFile, err := ReadPagesFromFile("pages.json")
 		if err != nil {
@@ -48,13 +58,18 @@ func main() {
 		}
 
 		fmt.Printf("Loaded %d pages from file\n", len(pagesFromFile))
+		fmt.Print("==========================\n")
 
 		pages = pagesFromFile
 	}
 
+	fmt.Print("==========================\n")
+	fmt.Printf("Create Layout %d \n", len(pages))
+	fmt.Print("==========================\n")
+
 	LayoutPages()
 
-	// PrintPages()
+	fmt.Printf("Layout created")
 
 	log.Println("Starting server on http://localhost:8080")
 	http.Handle("/nodes", enableCORS(http.HandlerFunc(handleNodes)))
@@ -92,7 +107,7 @@ func writeJSON(w http.ResponseWriter, data any) {
 }
 
 func LayoutPages() {
-	FruchtermanReingold(pages, 10000, 10000, 1000)
+	FruchtermanReingold(pages, 2*2500, 2*2500, 1000)
 
 }
 
