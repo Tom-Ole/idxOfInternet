@@ -21,7 +21,7 @@ type Edge struct {
 }
 
 const loadFromFile = false
-const maxDepth = 3
+const maxDepth = 1
 
 func main() {
 	if !loadFromFile {
@@ -107,8 +107,7 @@ func writeJSON(w http.ResponseWriter, data any) {
 }
 
 func LayoutPages() {
-	FruchtermanReingold(pages, 2*2500, 2*2500, 1000)
-
+	AssignCoordinatesWeighted(pages)
 }
 
 func enableCORS(next http.Handler) http.Handler {

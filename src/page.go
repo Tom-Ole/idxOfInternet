@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -16,6 +17,7 @@ type Page struct {
 	x      float64
 	y      float64
 	weight int
+	level  int
 }
 
 var pages = make(map[string]*Page)
@@ -93,6 +95,12 @@ func GetPage(url string, depth int) *Page {
 
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
 		log.Printf("Skipping %s due to HTTP status %d\n", url, resp.StatusCode)
+		return stub
+	}
+
+	contentType := resp.Header.Get("Content-Type")
+	if !strings.Contains(contentType, "text/html") {
+		log.Printf("Skipping non-HTML content: %s (%s)\n", url, contentType)
 		return stub
 	}
 

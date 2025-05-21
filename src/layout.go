@@ -3,6 +3,9 @@ package main
 import (
 	"math"
 	"math/rand"
+	"os"
+	"os/exec"
+	"sort"
 	"time"
 )
 
@@ -105,4 +108,60 @@ func max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func RunSFDP(dotFile string, outputFile string) error {
+	cmd := exec.Command("sfdp", "-Tplain", dotFile)
+	output, err := cmd.Output()
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(outputFile, output, 0644)
+}
+
+func AssignCoordinatesWeighted(pages map[string]*Page) {
+	// Group pages by layer
+	layerMap := make(map[int][]*Page)
+	maxLevel := 0
+	for _, p := range pages {
+		layerMap[p.level] = append(layerMap[p.level], p)
+		if p.level > maxLevel {
+			maxLevel = p.level
+		}
+	}
+
+	const layerSpacingX = 150.0
+	const baseNodeHeight = 10.0
+	const nodeVerticalGap = 5.0
+
+	for level := 0; level <= maxLevel; level++ {
+		layer := layerMap[level]
+
+		// Sort nodes by weight descending (or customize your own heuristic)
+		sort.Slice(layer, func(i, j int) bool {
+			return layer[i].weight > layer[j].weight
+		})
+
+		// Total "height" occupied by all nodes (weight-based)
+		totalHeight := 0.0
+		for _, p := range layer {
+			// space required by node = base height * weight + gap
+			totalHeight += float64(p.weight)*baseNodeHeight + nodeVerticalGap
+		}
+
+		// Start y offset so layer is vertically centered at y=0
+		yOffset := -totalHeight / 2
+
+		// Assign positions
+		currY := yOffset
+		for i, p := range layer {
+			// Position X is layer * spacing plus jitter based on index to spread horizontally a bit
+			p.x = float64(level)*layerSpacingX + float64(i%5)*10 // jitter up to 50 px horizontally
+
+			// Position Y is current y + half node height to center
+			nodeHeight := float64(p.weight)*baseNodeHeight + nodeVerticalGap
+			p.y = currY + nodeHeight/2
+			currY += nodeHeight
+		}
+	}
 }

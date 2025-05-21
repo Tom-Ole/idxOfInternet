@@ -126,3 +126,24 @@ func ReadPagesFromFile(filename string) (map[string]*Page, error) {
 
 	return pages, nil
 }
+
+func ExportToDOT(filename string, pages map[string]*Page) error {
+	f, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	fmt.Fprintln(f, "graph G {")
+
+	for _, page := range pages {
+		// Declare the node
+		fmt.Fprintf(f, "\"%s\";\n", page.link)
+		for _, out := range page.out {
+			fmt.Fprintf(f, "\"%s\" -- \"%s\";\n", page.link, out.link)
+		}
+	}
+
+	fmt.Fprintln(f, "}")
+	return nil
+}
