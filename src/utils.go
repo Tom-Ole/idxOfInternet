@@ -45,7 +45,6 @@ func SavePagesToFile(filename string, pages map[string]*Page) {
 		log.Fatal(err)
 	}
 	fmt.Printf("Pages saved to %s\n", filename)
-
 }
 
 type PageJSON struct {
@@ -53,34 +52,42 @@ type PageJSON struct {
 	Link   string   `json:"link"`
 	In     []string `json:"in"`
 	Out    []string `json:"out"`
-	Weight int      `json:"weight"`
-	X      float64  `json:"x"`
-	Y      float64  `json:"y"`
+	Weight uint16   `json:"weight"`
+	X      float32  `json:"x"`
+	Y      float32  `json:"y"`
+	Level  uint8    `json:"level"`
 }
 
 func PagesToJSON(pages map[string]*Page) ([]byte, error) {
-
 	jsonPages := make(map[string]PageJSON)
-	for _, page := range pages {
-		jsonPages[page.link] = PageJSON{
+	for link, page := range pages {
+		// Convert indices to links
+		inLinks := make([]string, len(page.in))
+		for i, idx := range page.in {
+			if idx < uint32(len(pageList)) {
+				inLinks[i] = pageList[idx].link
+			}
+		}
+
+		outLinks := make([]string, len(page.out))
+		for i, idx := range page.out {
+			if idx < uint32(len(pageList)) {
+				outLinks[i] = pageList[idx].link
+			}
+		}
+
+		jsonPages[link] = PageJSON{
 			Title:  page.title,
 			Link:   page.link,
-			In:     getPageLinks(page.in),
-			Out:    getPageLinks(page.out),
+			In:     inLinks,
+			Out:    outLinks,
 			Weight: page.weight,
 			X:      page.x,
 			Y:      page.y,
+			Level:  page.level,
 		}
 	}
 	return json.MarshalIndent(jsonPages, "", "  ")
-}
-
-func getPageLinks(pages []*Page) []string {
-	links := make([]string, len(pages))
-	for i, page := range pages {
-		links[i] = page.link
-	}
-	return links
 }
 
 func ReadPagesFromFile(filename string) (map[string]*Page, error) {
@@ -97,29 +104,35 @@ func ReadPagesFromFile(filename string) (map[string]*Page, error) {
 
 	// Step 2: First pass - create all Page objects without in/out links
 	pages := make(map[string]*Page)
+	linkToIndex := make(map[string]uint32)
+
 	for link, p := range rawPages {
-		pages[link] = &Page{
+		idx := uint32(len(pageList))
+		pageList = append(pageList, Page{
 			title:  p.Title,
 			link:   p.Link,
 			weight: p.Weight,
 			x:      p.X,
 			y:      p.Y,
-			in:     []*Page{},
-			out:    []*Page{},
-		}
+			level:  p.Level,
+			in:     make([]uint32, 0),
+			out:    make([]uint32, 0),
+		})
+		pages[link] = &pageList[idx]
+		linkToIndex[link] = idx
 	}
 
-	// Step 3: Second pass - assign in/out link references
+	// Step 3: Second pass - assign in/out link indices
 	for link, p := range rawPages {
 		current := pages[link]
 		for _, outLink := range p.Out {
-			if target, ok := pages[outLink]; ok {
-				current.out = append(current.out, target)
+			if idx, ok := linkToIndex[outLink]; ok {
+				current.out = append(current.out, idx)
 			}
 		}
 		for _, inLink := range p.In {
-			if source, ok := pages[inLink]; ok {
-				current.in = append(current.in, source)
+			if idx, ok := linkToIndex[inLink]; ok {
+				current.in = append(current.in, idx)
 			}
 		}
 	}
@@ -139,8 +152,10 @@ func ExportToDOT(filename string, pages map[string]*Page) error {
 	for _, page := range pages {
 		// Declare the node
 		fmt.Fprintf(f, "\"%s\";\n", page.link)
-		for _, out := range page.out {
-			fmt.Fprintf(f, "\"%s\" -- \"%s\";\n", page.link, out.link)
+		for _, outIdx := range page.out {
+			if outIdx < uint32(len(pageList)) {
+				fmt.Fprintf(f, "\"%s\" -- \"%s\";\n", page.link, pageList[outIdx].link)
+			}
 		}
 	}
 

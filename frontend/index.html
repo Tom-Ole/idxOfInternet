@@ -45,8 +45,97 @@
     <div id="tooltip"></div>
 
     <script>
-        const { DeckGL, OrthographicView, ScatterplotLayer, LineLayer } = deck;
+        const { DeckGL, OrthographicView, ScatterplotLayer, PathLayer } = deck;
         const tooltip = document.getElementById('tooltip');
+        let hoveredNodeId = null;
+        let hoveredEdge = null;
+        let nodes = [];
+        let processedEdges = [];
+        let deckgl;
+
+        function createLayers() {
+            let displayedEdges = processedEdges;
+            if (hoveredNodeId) {
+                displayedEdges = processedEdges.filter(
+                    d => d.source.id === hoveredNodeId || d.target.id === hoveredNodeId
+                );
+            }
+            return [
+                new PathLayer({
+                    id: 'edges',
+                    data: displayedEdges,
+                    getPath: d => {
+                        const sx = d.source.x, sy = d.source.y;
+                        const tx = d.target.x, ty = d.target.y;
+                        const mx = (sx + tx) / 2;
+                        const my = (sy + ty) / 2;
+                        const dx = tx - sx, dy = ty - sy;
+                        const norm = Math.sqrt(dx * dx + dy * dy) || 1;
+                        const curveStrength = 100;
+                        const cx = mx - (dy / norm) * curveStrength;
+                        const cy = my + (dx / norm) * curveStrength;
+                        return [
+                            [sx, sy],
+                            [cx, cy],
+                            [tx, ty]
+                        ];
+                    },
+                    getWidth: d => {
+                        if (hoveredEdge && hoveredEdge === d) return 8;
+                        if (hoveredNodeId && (d.source.id === hoveredNodeId || d.target.id === hoveredNodeId)) return 2.5;
+                        return 1.5;
+                    },
+                    getColor: d => {
+                        if (hoveredEdge && hoveredEdge === d) return [0, 255, 0, 255];
+                        if (hoveredNodeId && (d.source.id === hoveredNodeId || d.target.id === hoveredNodeId)) return [255, 0, 0, 180];
+                        return [120, 120, 180, 40];
+                    },
+                    pickable: true,
+                    pickRadius: 8,
+                    onHover: info => {
+                        if (info.object) {
+                            hoveredEdge = info.object;
+                            showTooltip(info.x, info.y, `
+                                <strong>Edge</strong><br>
+                                From: ${info.object.source.title || info.object.from}<br>
+                                To: ${info.object.target.title || info.object.to}
+                            `);
+                        } else {
+                            hoveredEdge = null;
+                            hideTooltip();
+                        }
+                        deckgl.setProps({ layers: createLayers() });
+                    }
+                }),
+                new ScatterplotLayer({
+                    id: 'nodes',
+                    data: nodes,
+                    getPosition: d => [d.x, d.y],
+                    getRadius: d => (5 + Math.sqrt(d.weight || 1) * 3),
+                    getFillColor: [0, 128, 255],
+                    getLineColor: [255, 255, 255],
+                    lineWidthMinPixels: 1,
+                    stroked: true,
+                    filled: true,
+                    pickable: true,
+                    onHover: info => {
+                        if (info.object) {
+                            hoveredNodeId = info.object.id;
+                            hoveredEdge = null;
+                            showTooltip(info.x, info.y, `
+                                <strong>${info.object.title || info.object.id}</strong><br>
+                                Weight: ${info.object.weight || 'N/A'}
+                            `);
+                        } else {
+                            hoveredNodeId = null;
+                            hoveredEdge = null;
+                            hideTooltip();
+                        }
+                        deckgl.setProps({ layers: createLayers() });
+                    }
+                })
+            ];
+        }
 
         // Helper function to show tooltip
         function showTooltip(x, y, content) {
@@ -96,81 +185,37 @@
             }
         }
 
-        fetchData().then(({ nodes, edges }) => {
-            // Create a node map for edge processing
+        fetchData().then(({ nodes: fetchedNodes, edges }) => {
+            nodes = fetchedNodes;
             const nodeMap = {};
             nodes.forEach(node => {
                 nodeMap[node.id] = node;
             });
-
-            // Process edges to include positions
-            // const processedEdges = edges.filter(edge => {
-            //     return nodeMap[edge.from] && nodeMap[edge.to];
-            // }).map(edge => {
-            //     const source = nodeMap[edge.from];
-            //     const target = nodeMap[edge.to];
-            //     return {
-            //         sourcePosition: [source.x, source.y],
-            //         targetPosition: [target.x, target.y],
-            //         from: edge.from,
-            //         to: edge.to,
-            //         source,
-            //         target
-            //     };
-            // });
-
-            // Helper to generate a bundled curve between two points
-            function generateBundledPath(source, target, strength = 0.2) {
-                const midX = (source.x + target.x) / 2;
-                const midY = (source.y + target.y) / 2 - strength * Math.abs(source.x - target.x); // offset curve
-                return [
-                    [source.x, source.y],
-                    [midX, midY],
-                    [target.x, target.y]
-                ];
-            }
-
-            // Process edges into bundled paths
-            const processedEdges = edges.filter(edge => {
-                return nodeMap[edge.from] && nodeMap[edge.to];
-            }).map(edge => {
+            processedEdges = edges.filter(edge => nodeMap[edge.from] && nodeMap[edge.to]).map(edge => {
                 const source = nodeMap[edge.from];
                 const target = nodeMap[edge.to];
                 return {
-                    path: generateBundledPath(source, target),
-                    from: edge.from,
-                    to: edge.to,
+                    ...edge,
                     source,
                     target
                 };
             });
-
-
-            // Calculate bounds to center the view
             const xs = nodes.map(n => n.x);
             const ys = nodes.map(n => n.y);
             const minX = Math.min(...xs);
             const maxX = Math.max(...xs);
             const minY = Math.min(...ys);
             const maxY = Math.max(...ys);
-
-            // Calculate center and range
             const centerX = (minX + maxX) / 2;
             const centerY = (minY + maxY) / 2;
             const rangeX = Math.max(maxX - minX, 200);
             const rangeY = Math.max(maxY - minY, 200);
-
-            // Get width and height of the viewport
             const width = window.innerWidth;
             const height = window.innerHeight;
-
-            // Calculate zoom to fit all nodes with padding
             const padding = 50;
             const scaleX = (width - padding * 2) / rangeX;
             const scaleY = (height - padding * 2) / rangeY;
             const scale = Math.min(scaleX, scaleY);
-
-            // Create an orthographic view
             const view = new OrthographicView({
                 id: 'ortho',
                 controller: true,
@@ -184,90 +229,18 @@
                     keyboard: true
                 }
             });
-
-
-            // Create the layers
-            const layers = [
-                // Edge layer
-                // new LineLayer({
-                //     id: 'edges',
-                //     data: processedEdges,
-                //     getWidth: 1.5,
-                //     getSourcePosition: d => [d.sourcePosition[0], d.sourcePosition[1]],
-                //     getTargetPosition: d => [d.targetPosition[0], d.targetPosition[1]],
-                //     getColor: [120, 120, 180],
-                //     pickable: true,
-                //     onHover: info => {
-                //         if (info.object) {
-                //             showTooltip(info.x, info.y, `
-                //                 <strong>Edge</strong><br>
-                //                 From: ${info.object.source.title || info.object.from}<br>
-                //                 To: ${info.object.target.title || info.object.to}
-                //             `);
-                //         } else {
-                //             hideTooltip();
-                //         }
-                //     }
-                // }),
-                new deck.PathLayer({
-                    id: 'edges',
-                    data: processedEdges,
-                    getPath: d => d.path,
-                    getWidth: 0.5,
-                    getColor: [120, 120, 180],
-                    pickable: true,
-                    onHover: info => {
-                        if (info.object) {
-                            showTooltip(info.x, info.y, `
-                <strong>Edge</strong><br>
-                From: ${info.object.source.title || info.object.from}<br>
-                To: ${info.object.target.title || info.object.to}
-            `);
-                        } else {
-                            hideTooltip();
-                        }
-                    }
-                }),
-                // Node layer
-                new ScatterplotLayer({
-                    id: 'nodes',
-                    data: nodes,
-                    getPosition: d => [d.x, d.y],
-                    getRadius: d => (5 + Math.sqrt(d.weight || 1) * 3),
-                    getFillColor: [0, 128, 255],
-                    getLineColor: [255, 255, 255],
-                    lineWidthMinPixels: 1,
-                    stroked: true,
-                    filled: true,
-                    pickable: true,
-                    onHover: info => {
-                        if (info.object) {
-                            showTooltip(info.x, info.y, `
-                                <strong>${info.object.title || info.object.id}</strong><br>
-                                Weight: ${info.object.weight || 'N/A'}
-                            `);
-                        } else {
-                            hideTooltip();
-                        }
-                    }
-                })
-            ];
-
-            // Create the initial view state
             const initialViewState = {
                 target: [centerX, centerY, 0],
                 zoom: scale,
                 minZoom: -10,
                 maxZoom: 100
             };
-
-            // Create and attach the DeckGL instance
-            let deckgl = new DeckGL({
+            deckgl = new DeckGL({
                 container: 'container',
                 views: [view],
                 viewState: initialViewState,
                 controller: true,
-                layers: layers,
+                layers: createLayers(),
                 getTooltip: ({ object }) => object && {
                     html: `<div>${object.title || object.id}</div>`,
                     style: {
@@ -280,7 +253,6 @@
                     deckgl.setProps({ viewState });
                 }
             });
-
             // Add a message to the console to confirm initialization
             console.log('Graph visualization initialized');
         }).catch(error => {
