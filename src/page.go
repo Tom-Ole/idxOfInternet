@@ -15,10 +15,10 @@ func ParsePage(link string, depth int, graph *Graph) {
 		return
 	}
 
-	nodeID := graph.AddNode(link, 0, 0, 1)
+	nodeID := graph.AddNode(link, 1, 1, 1)
 
 	for _, l := range links {
-		childNodeID := graph.AddNode(l, 0, 0, 1)
+		childNodeID := graph.AddNode(l, 1, 1, 1)
 		graph.AddEdge(nodeID, childNodeID)
 		ParsePage(l, depth-1, graph)
 	}

@@ -6,15 +6,15 @@ import (
 	"net/http"
 )
 
-type NodeID uint32
-type EdgeID uint32
+type NodeID int
+type EdgeID int
 
 type Node struct {
 	ID      NodeID   `json:"id"`
 	Link    string   `json:"link"`
-	X       int      `json:"x"`
-	Y       int      `json:"y"`
-	Weight  uint32   `json:"weight"`
+	X       float64  `json:"x"`
+	Y       float64  `json:"y"`
+	Weight  int      `json:"weight"`
 	EdgeIDs []EdgeID `json:"edge_ids"`
 }
 
@@ -27,6 +27,9 @@ type Edge struct {
 type Cluster struct {
 	ID      int
 	NodeIDs []NodeID
+	Radius  float64
+	CenterX float64
+	CenterY float64
 }
 
 type Graph struct {
@@ -38,7 +41,7 @@ type Graph struct {
 	nextEdgeID EdgeID
 }
 
-func (g *Graph) AddNode(link string, x int, y int, weight uint32) NodeID {
+func (g *Graph) AddNode(link string, x float64, y float64, weight int) NodeID {
 	id := g.nextNodeID
 	g.nextNodeID++
 	g.Nodes[id] = &Node{
@@ -110,32 +113,10 @@ func (g *Graph) ClusterByConnectivity() {
 	}
 }
 
-func (g *Graph) PrintGraph() {
+func (g *Graph) CalculateWeight() {
 	for _, node := range g.Nodes {
-		fmt.Printf("Node %d: %s\n", node.ID, node.Link)
-		for _, edgeID := range node.EdgeIDs {
-			edge := g.Edges[edgeID]
-			fmt.Printf("  Edge to Node %d\n", edge.To)
-		}
+		node.Weight = max(int(len(node.EdgeIDs)), 1)
 	}
-}
-
-func (g *Graph) PrintClusters() {
-	for _, cluster := range g.Clusters {
-		fmt.Printf("Cluster %d: ", cluster.ID)
-		for _, nodeID := range cluster.NodeIDs {
-			fmt.Printf("%d ", nodeID)
-		}
-		fmt.Println()
-	}
-}
-
-func (g *Graph) Count() int {
-	return len(g.Nodes)
-}
-
-func (g *Graph) CountClusters() int {
-	return len(g.Clusters)
 }
 
 func createGraph() *Graph {
@@ -155,17 +136,23 @@ func main() {
 	// recursive function to parse the initial Page and there links with given depth.
 	ParsePage(initialLink, depth, graph)
 
+	graph.CalculateWeight()
+	graph.PrintGraph()
+
 	// Create clusters based on domain or connectivity
 	graph.ClusterByDomain()
 	// graph.ClusterByConnectivity()
 
+	fmt.Printf("=================================== \n")
 	fmt.Printf("Total nodes: %d\n", graph.Count())
 	fmt.Printf("Total clusters: %d\n", graph.CountClusters())
+	fmt.Printf("=================================== \n")
 
 	// Create layout to visualize the graph on a vanilla HTML/CSS/JS Frontend with DECK.gl
 	graph.CreateLayout()
 
 	// Open a server and serve the graph to the frontend
+
 	http.HandleFunc("/graph", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
@@ -197,7 +184,13 @@ func main() {
 			http.Error(w, "Failed to encode graph", http.StatusInternalServerError)
 		}
 	})
-	http.ListenAndServe(":8080", nil)
 	fmt.Println("Server started at :8080")
+	http.ListenAndServe(":8080", nil)
 
 }
+
+// I need a layout algorithm that can handle 250k+ nodes.
+// The layout should take clusters into account and should be optimized for performance.
+// The layout should also be able to handle a large number of edges.
+// The layout should look natural and not have overlapping nodes and no grid.
+// I want a clear seperation between clusters.
