@@ -1,117 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+	"net/url"
+)
 
-func PreprocessPages(pages map[string]*Page) map[string]*Page {
-
-	fmt.Print("==========================\n")
-	fmt.Printf("PreprocessPages %d\n", len(pages))
-	fmt.Print("==========================\n")
-
-	titleMap := make(map[string]*Page)  // title -> main page
-	duplicates := make(map[*Page]*Page) // old -> merged into
-
-	// Step 1: Choose representative for each title (skip empty titles)
-	for _, page := range pages {
-		if page.title == "" {
-			continue
-		}
-		if _, exists := titleMap[page.title]; !exists {
-			titleMap[page.title] = page
-		} else {
-			duplicates[page] = titleMap[page.title]
-		}
+func CheckResponse(resp *http.Response) error {
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("failed to fetch page: %s", resp.Status)
 	}
 
-	// Step 2: Merge duplicate pages into the representative
-	for oldPage, mainPage := range duplicates {
-		// Merge in-links
-		for _, inIdx := range oldPage.in {
-			if inIdx >= uint32(len(pageList)) {
-				continue
-			}
-			inPage := &pageList[inIdx]
-
-			// Skip if already linked to main page
-			alreadyLinked := false
-			for _, idx := range mainPage.in {
-				if idx == inIdx {
-					alreadyLinked = true
-					break
-				}
-			}
-			if alreadyLinked {
-				continue
-			}
-
-			// Add to main page's in-links
-			mainPage.in = append(mainPage.in, inIdx)
-
-			// Update in-page's out-links
-			for i, outIdx := range inPage.out {
-				if outIdx < uint32(len(pageList)) && &pageList[outIdx] == oldPage {
-					// Find mainPage's index by title
-					var mainIdx uint32
-					for j, p := range pageList {
-						if p.title == mainPage.title {
-							mainIdx = uint32(j)
-							break
-						}
-					}
-					inPage.out[i] = mainIdx
-				}
-			}
-		}
-
-		// Merge out-links
-		for _, outIdx := range oldPage.out {
-			if outIdx >= uint32(len(pageList)) {
-				continue
-			}
-			outPage := &pageList[outIdx]
-
-			// Skip if already linked to main page
-			alreadyLinked := false
-			for _, idx := range mainPage.out {
-				if idx == outIdx {
-					alreadyLinked = true
-					break
-				}
-			}
-			if alreadyLinked {
-				continue
-			}
-
-			// Add to main page's out-links
-			mainPage.out = append(mainPage.out, outIdx)
-
-			// Update out-page's in-links
-			for i, inIdx := range outPage.in {
-				if inIdx < uint32(len(pageList)) && &pageList[inIdx] == oldPage {
-					// Find mainPage's index by title
-					var mainIdx uint32
-					for j, p := range pageList {
-						if p.title == mainPage.title {
-							mainIdx = uint32(j)
-							break
-						}
-					}
-					outPage.in[i] = mainIdx
-				}
-			}
-		}
-
-		// Merge weight
-		mainPage.weight += oldPage.weight
+	if ct := resp.Header.Get("Content-Type"); ct == "" || ct[:9] != "text/html" {
+		return fmt.Errorf("invalid content type: %s", resp.Header.Get("Content-Type"))
 	}
 
-	// Step 3: Build new cleaned map
-	cleaned := make(map[string]*Page)
-	for link, page := range pages {
-		if _, isDuplicate := duplicates[page]; !isDuplicate {
-			cleaned[link] = page
-		}
+	return nil
+}
+
+func PreprocessLinks(links []string, base string) ([]string, error) {
+	baseURL, err := url.Parse(base)
+	if err != nil {
+		return nil, err
 	}
 
-	return cleaned
+	var validLinks []string
+	for _, link := range links {
+		parsed, err := url.Parse(link)
+		if err != nil {
+			return nil, fmt.Errorf("invalid URL: %s", link)
+		}
+		resolved := baseURL.ResolveReference(parsed)
+		validLinks = append(validLinks, resolved.String())
+	}
+	return validLinks, nil
 }
