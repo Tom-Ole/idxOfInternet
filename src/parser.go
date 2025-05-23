@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"regexp"
 	"time"
 )
@@ -58,4 +59,13 @@ func FindAllMatches(body string, pattern string) [][]string {
 	re := regexp.MustCompile(pattern)
 	matches := re.FindAllStringSubmatch(body, -1)
 	return matches
+}
+
+func ExtractDomain(link string) string {
+	u, err := url.Parse(link)
+	if err != nil {
+		return ""
+	}
+
+	return u.Hostname()
 }

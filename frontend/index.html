@@ -5,16 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Graph Visualization</title>
-
     <script src="https://unpkg.com/deck.gl@latest/dist.min.js"></script>
-
-
     <style>
-        body {
-            width: 100vw;
-            height: 100vh;
+        body,
+        html {
             margin: 0;
             padding: 0;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
         }
 
@@ -28,242 +26,93 @@
             position: absolute;
             background: white;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            padding: 10px;
+            padding: 6px 10px;
             border-radius: 3px;
             font-family: Arial, sans-serif;
             font-size: 12px;
             pointer-events: none;
             display: none;
             z-index: 9;
+            max-width: 300px;
         }
     </style>
 </head>
 
 <body>
-
     <div id="container"></div>
     <div id="tooltip"></div>
 
     <script>
         const { DeckGL, OrthographicView, ScatterplotLayer, PathLayer } = deck;
         const tooltip = document.getElementById('tooltip');
-        let hoveredNodeId = null;
-        let hoveredEdge = null;
-        let nodes = [];
-        let processedEdges = [];
-        let deckgl;
 
-        function createLayers() {
-            let displayedEdges = processedEdges;
-            if (hoveredNodeId) {
-                displayedEdges = processedEdges.filter(
-                    d => d.source.id === hoveredNodeId || d.target.id === hoveredNodeId
-                );
-            }
-            return [
-                new PathLayer({
-                    id: 'edges',
-                    data: displayedEdges,
-                    getPath: d => {
-                        const sx = d.source.x, sy = d.source.y;
-                        const tx = d.target.x, ty = d.target.y;
-                        const mx = (sx + tx) / 2;
-                        const my = (sy + ty) / 2;
-                        const dx = tx - sx, dy = ty - sy;
-                        const norm = Math.sqrt(dx * dx + dy * dy) || 1;
-                        const curveStrength = 100;
-                        const cx = mx - (dy / norm) * curveStrength;
-                        const cy = my + (dx / norm) * curveStrength;
-                        return [
-                            [sx, sy],
-                            [cx, cy],
-                            [tx, ty]
-                        ];
-                    },
-                    getWidth: d => {
-                        if (hoveredEdge && hoveredEdge === d) return 8;
-                        if (hoveredNodeId && (d.source.id === hoveredNodeId || d.target.id === hoveredNodeId)) return 2.5;
-                        return 1.5;
-                    },
-                    getColor: d => {
-                        if (hoveredEdge && hoveredEdge === d) return [0, 255, 0, 255];
-                        if (hoveredNodeId && (d.source.id === hoveredNodeId || d.target.id === hoveredNodeId)) return [255, 0, 0, 180];
-                        return [120, 120, 180, 40];
-                    },
-                    pickable: true,
-                    pickRadius: 8,
-                    onHover: info => {
-                        if (info.object) {
-                            hoveredEdge = info.object;
-                            showTooltip(info.x, info.y, `
-                                <strong>Edge</strong><br>
-                                From: ${info.object.source.title || info.object.from}<br>
-                                To: ${info.object.target.title || info.object.to}
-                            `);
-                        } else {
-                            hoveredEdge = null;
-                            hideTooltip();
-                        }
-                        deckgl.setProps({ layers: createLayers() });
-                    }
-                }),
-                new ScatterplotLayer({
-                    id: 'nodes',
-                    data: nodes,
-                    getPosition: d => [d.x, d.y],
-                    getRadius: d => (5 + Math.sqrt(d.weight || 1) * 3),
-                    getFillColor: [0, 128, 255],
-                    getLineColor: [255, 255, 255],
-                    lineWidthMinPixels: 1,
-                    stroked: true,
-                    filled: true,
-                    pickable: true,
-                    onHover: info => {
-                        if (info.object) {
-                            hoveredNodeId = info.object.id;
-                            hoveredEdge = null;
-                            showTooltip(info.x, info.y, `
-                                <strong>${info.object.title || info.object.id}</strong><br>
-                                Weight: ${info.object.weight || 'N/A'}
-                            `);
-                        } else {
-                            hoveredNodeId = null;
-                            hoveredEdge = null;
-                            hideTooltip();
-                        }
-                        deckgl.setProps({ layers: createLayers() });
-                    }
-                })
-            ];
+        async function fetchGraph() {
+            const res = await fetch("http://localhost:8080/graph");
+            if (!res.ok) throw new Error("Failed to fetch graph");
+            return await res.json();
         }
 
-        // Helper function to show tooltip
-        function showTooltip(x, y, content) {
-            tooltip.style.display = 'block';
-            tooltip.style.left = x + 10 + 'px';
-            tooltip.style.top = y + 10 + 'px';
-            tooltip.innerHTML = content;
-        }
-
-        // Helper function to hide tooltip
-        function hideTooltip() {
-            tooltip.style.display = 'none';
-        }
-
-        async function fetchData() {
-            try {
-                const nodesResponse = await fetch('http://localhost:8080/nodes');
-                const nodesData = await nodesResponse.json();
-
-                const edgesResponse = await fetch('http://localhost:8080/edges');
-                const edgesData = await edgesResponse.json();
-
-                console.log('Nodes:', nodesData);
-                console.log('Edges:', edgesData);
-
-                return {
-                    nodes: nodesData,
-                    edges: edgesData
+        fetchGraph().then(data => {
+            const nodeMap = new Map();
+            const nodes = data.nodes.map(n => {
+                const node = {
+                    id: n.id,
+                    title: n.link,
+                    position: [n.x, n.y],
+                    weight: n.weight
                 };
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                // Return sample data as fallback
-                return {
-                    nodes: [
-                        { id: "n1", title: "Node 1", weight: 3, x: -100, y: 0 },
-                        { id: "n2", title: "Node 2", weight: 2, x: 100, y: 0 },
-                        { id: "n3", title: "Node 3", weight: 4, x: 0, y: 100 },
-                        { id: "n4", title: "Node 4", weight: 1, x: 0, y: -100 }
-                    ],
-                    edges: [
-                        { from: "n1", to: "n2" },
-                        { from: "n1", to: "n3" },
-                        { from: "n2", to: "n4" },
-                        { from: "n3", to: "n4" }
-                    ]
-                };
-            }
-        }
-
-        fetchData().then(({ nodes: fetchedNodes, edges }) => {
-            nodes = fetchedNodes;
-            const nodeMap = {};
-            nodes.forEach(node => {
-                nodeMap[node.id] = node;
+                nodeMap.set(n.id, node);
+                return node;
             });
-            processedEdges = edges.filter(edge => nodeMap[edge.from] && nodeMap[edge.to]).map(edge => {
-                const source = nodeMap[edge.from];
-                const target = nodeMap[edge.to];
-                return {
-                    ...edge,
-                    source,
-                    target
-                };
-            });
-            const xs = nodes.map(n => n.x);
-            const ys = nodes.map(n => n.y);
-            const minX = Math.min(...xs);
-            const maxX = Math.max(...xs);
-            const minY = Math.min(...ys);
-            const maxY = Math.max(...ys);
-            const centerX = (minX + maxX) / 2;
-            const centerY = (minY + maxY) / 2;
-            const rangeX = Math.max(maxX - minX, 200);
-            const rangeY = Math.max(maxY - minY, 200);
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            const padding = 50;
-            const scaleX = (width - padding * 2) / rangeX;
-            const scaleY = (height - padding * 2) / rangeY;
-            const scale = Math.min(scaleX, scaleY);
-            const view = new OrthographicView({
-                id: 'ortho',
-                controller: true,
-                controllerSettings: {
-                    dragPan: true,
-                    dragRotate: false,
-                    scrollZoom: true,
-                    doubleClickZoom: true,
-                    touchZoom: true,
-                    touchRotate: false,
-                    keyboard: true
+
+            const edges = data.edges.map(e => {
+                const source = nodeMap.get(e.from);
+                const target = nodeMap.get(e.to);
+                if (source && target) {
+                    return { path: [source.position, target.position] };
                 }
-            });
-            const initialViewState = {
-                target: [centerX, centerY, 0],
-                zoom: scale,
-                minZoom: -10,
-                maxZoom: 100
-            };
-            deckgl = new DeckGL({
+                return null;
+            }).filter(Boolean);
+
+            const deckgl = new DeckGL({
                 container: 'container',
-                views: [view],
-                viewState: initialViewState,
+                views: new OrthographicView(),
                 controller: true,
-                layers: createLayers(),
-                getTooltip: ({ object }) => object && {
-                    html: `<div>${object.title || object.id}</div>`,
-                    style: {
-                        backgroundColor: '#fff',
-                        fontSize: '12px'
-                    }
+                initialViewState: {
+                    target: [0, 0, 0],
+                    zoom: 0.1,
                 },
-                onViewStateChange: ({ viewState: vs }) => {
-                    viewState = vs;
-                    deckgl.setProps({ viewState });
-                }
+                getTooltip: ({ object }) => {
+                    return object?.id !== undefined
+                        ? { html: `Node ID: ${object.id}<br>Link: ${object.title}`, style: { zIndex: 10 } }
+                        : null;
+                },
+                layers: [
+                    new PathLayer({
+                        id: 'edges',
+                        data: edges,
+                        getPath: d => d.path,
+                        getColor: [150, 150, 150],
+                        getWidth: 2,
+                        widthMinPixels: 1,
+                        rounded: true
+                    }),
+                    new ScatterplotLayer({
+                        id: 'nodes',
+                        data: nodes,
+                        getPosition: d => d.position,
+                        getRadius: d => Math.sqrt(d.weight) * 5,
+                        getFillColor: [255, 140, 0],
+                        pickable: true,
+                        radiusMinPixels: 2,
+                        onClick: ({ object }) => {
+                            if (object) alert(`Node clicked! ID: ${object.id}`);
+                        }
+                    })
+
+                ]
             });
-            // Add a message to the console to confirm initialization
-            console.log('Graph visualization initialized');
-        }).catch(error => {
-            console.error('Error initializing visualization:', error);
-            // Display error on the screen for better debugging
-            document.body.innerHTML += `
-                <div style="position:absolute; top:10px; left:10px; background:white; padding:10px; border:1px solid red;">
-                    Error initializing graph: ${error.message}
-                </div>
-            `;
-        });
+        }).catch(console.error);
     </script>
 </body>
 
