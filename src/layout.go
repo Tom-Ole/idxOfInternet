@@ -2,166 +2,254 @@ package main
 
 import (
 	"math"
-	"math/rand"
-	"os"
-	"os/exec"
-	"sort"
-	"time"
+	"runtime"
+	"sync"
 )
 
-func FruchtermanReingold(graph map[string]*Page, width float64, height float64, iterations int) {
-	area := width * height
-	n := float64(len(graph))
-	if n == 0 {
+// CreateLayout creates a force-directed layout optimized for 250k+ nodes
+func (g *Graph) CreateLayout() {
+	const (
+		iterations     = 50         // Reduced for performance
+		width, height  = 4000, 4000 // Larger space for more nodes
+		repulsionConst = 100000.0
+		centeringForce = 0.0005
+		damping        = 0.8
+		timestep       = 1.0
+		gridSize       = 200   // Spatial partitioning grid
+		maxInfluence   = 400.0 // Max distance for force calculation
+	)
+
+	nodeCount := len(g.Nodes)
+	if nodeCount == 0 {
 		return
 	}
-	compression := 0.7
-	k := math.Sqrt(area/n) * compression
-	temperature := width / 10
-	gravity := 0.05
 
-	centerX := width / 2
-	centerY := height / 2
+	// Initialize positions in a circle to avoid edge clustering
+	nodeList := make([]*Node, 0, nodeCount)
+	velocities := make([][2]float64, nodeCount)
 
-	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+	i := 0
+	for _, node := range g.Nodes {
+		// Distribute nodes in concentric circles
+		layer := int(math.Sqrt(float64(i)))
+		angle := float64(i-layer*layer) * 2.0 * math.Pi / float64(2*layer+1)
+		if layer == 0 {
+			angle = 0
+		}
+		radius := float64(layer)*30.0 + 50.0
 
-	// Estimate frontend radius from weight
-	getRadius := func(p *Page) float64 {
-		return (5 + math.Sqrt(float64(max(p.weight, 1)))*3) * 2
+		node.X = int(radius * math.Cos(angle))
+		node.Y = int(radius * math.Sin(angle))
+		nodeList = append(nodeList, node)
+		velocities[i] = [2]float64{0, 0}
+		i++
 	}
 
-	// Random initial positions
-	for _, p := range graph {
-		p.x = rng.Float64() * width
-		p.y = rng.Float64() * height
+	// Spatial grid for optimization
+	type GridCell struct {
+		nodes   []int // indices into nodeList
+		centerX float64
+		centerY float64
+		mass    float64
+	}
+
+	gridCols := int(width / gridSize)
+	gridRows := int(height / gridSize)
+
+	// Determine number of workers based on CPU cores
+	numWorkers := runtime.NumCPU()
+	if numWorkers > 8 {
+		numWorkers = 8 // Diminishing returns beyond 8 cores for this workload
 	}
 
 	for iter := 0; iter < iterations; iter++ {
-		displacements := make(map[*Page][2]float64)
+		// Create spatial grid
+		grid := make([][]GridCell, gridRows)
+		for row := range grid {
+			grid[row] = make([]GridCell, gridCols)
+		}
 
-		// Repulsive forces with collision-aware radius
-		for _, v := range graph {
-			displacements[v] = [2]float64{0, 0}
-			rv := getRadius(v)
-			for _, u := range graph {
-				if v == u {
-					continue
-				}
-				ru := getRadius(u)
-				dx := v.x - u.x
-				dy := v.y - u.y
-				dist := math.Hypot(dx, dy) + 0.01
+		// Populate grid
+		for idx, node := range nodeList {
+			gridX := int((float64(node.X) + width/2) / gridSize)
+			gridY := int((float64(node.Y) + height/2) / gridSize)
 
-				minDist := (rv + ru) / 2 // average radii
+			// Clamp to grid bounds
+			if gridX < 0 {
+				gridX = 0
+			}
+			if gridX >= gridCols {
+				gridX = gridCols - 1
+			}
+			if gridY < 0 {
+				gridY = 0
+			}
+			if gridY >= gridRows {
+				gridY = gridRows - 1
+			}
 
-				// If overlapping or too close, exaggerate repulsion
-				if dist < minDist {
-					dist = minDist
-				}
+			cell := &grid[gridY][gridX]
+			cell.nodes = append(cell.nodes, idx)
+			cell.centerX += float64(node.X)
+			cell.centerY += float64(node.Y)
+			cell.mass += 1.0
+		}
 
-				repForce := k * k / dist
-				displacements[v] = [2]float64{
-					displacements[v][0] + (dx/dist)*repForce,
-					displacements[v][1] + (dy/dist)*repForce,
+		// Calculate cell centers
+		for row := range grid {
+			for col := range grid[row] {
+				cell := &grid[row][col]
+				if cell.mass > 0 {
+					cell.centerX /= cell.mass
+					cell.centerY /= cell.mass
 				}
 			}
 		}
 
-		// Attractive forces
-		for _, v := range graph {
-			for _, u := range v.out {
-				dx := v.x - u.x
-				dy := v.y - u.y
-				dist := math.Hypot(dx, dy) + 0.01
-				attrForce := dist * dist / k
-				displacements[v] = [2]float64{
-					displacements[v][0] - (dx/dist)*attrForce,
-					displacements[v][1] - (dy/dist)*attrForce,
-				}
-				displacements[u] = [2]float64{
-					displacements[u][0] + (dx/dist)*attrForce,
-					displacements[u][1] + (dy/dist)*attrForce,
-				}
+		// Calculate forces in parallel
+		forces := make([][2]float64, nodeCount)
+		var wg sync.WaitGroup
+
+		chunkSize := nodeCount / numWorkers
+		if chunkSize < 100 {
+			chunkSize = 100
+		}
+
+		for start := 0; start < nodeCount; start += chunkSize {
+			end := start + chunkSize
+			if end > nodeCount {
+				end = nodeCount
 			}
+
+			wg.Add(1)
+			go func(startIdx, endIdx int) {
+				defer wg.Done()
+
+				for i := startIdx; i < endIdx; i++ {
+					node := nodeList[i]
+					x1 := float64(node.X)
+					y1 := float64(node.Y)
+					fx, fy := 0.0, 0.0
+
+					// Get grid position
+					gridX := int((x1 + width/2) / gridSize)
+					gridY := int((y1 + height/2) / gridSize)
+
+					// Check surrounding cells (3x3 neighborhood)
+					for dy := -1; dy <= 1; dy++ {
+						for dx := -1; dx <= 1; dx++ {
+							checkX := gridX + dx
+							checkY := gridY + dy
+
+							if checkX < 0 || checkX >= gridCols || checkY < 0 || checkY >= gridRows {
+								continue
+							}
+
+							cell := &grid[checkY][checkX]
+							if len(cell.nodes) == 0 {
+								continue
+							}
+
+							if dx == 0 && dy == 0 {
+								// Same cell - calculate individual repulsions
+								for _, otherIdx := range cell.nodes {
+									if otherIdx == i {
+										continue
+									}
+
+									other := nodeList[otherIdx]
+									x2 := float64(other.X)
+									y2 := float64(other.Y)
+									dx := x1 - x2
+									dy := y1 - y2
+									distSq := dx*dx + dy*dy + 1.0
+
+									if distSq > maxInfluence*maxInfluence {
+										continue
+									}
+
+									force := repulsionConst / distSq
+									dist := math.Sqrt(distSq)
+									fx += (dx / dist) * force
+									fy += (dy / dist) * force
+								}
+							} else {
+								// Distant cell - use center of mass approximation
+								if cell.mass > 0 {
+									dx := x1 - cell.centerX
+									dy := y1 - cell.centerY
+									distSq := dx*dx + dy*dy + 1.0
+
+									if distSq > maxInfluence*maxInfluence {
+										continue
+									}
+
+									force := repulsionConst * cell.mass / distSq
+									dist := math.Sqrt(distSq)
+									fx += (dx / dist) * force
+									fy += (dy / dist) * force
+								}
+							}
+						}
+					}
+
+					// Centering force
+					centerDist := math.Sqrt(x1*x1 + y1*y1)
+					if centerDist > 1.0 {
+						centerForceStrength := centeringForce * centerDist
+						fx -= (x1 / centerDist) * centerForceStrength
+						fy -= (y1 / centerDist) * centerForceStrength
+					}
+
+					forces[i] = [2]float64{fx, fy}
+				}
+			}(start, end)
 		}
 
-		// Apply displacement + gravity
-		for _, v := range graph {
-			dx, dy := displacements[v][0], displacements[v][1]
-			dx += (centerX - v.x) * gravity
-			dy += (centerY - v.y) * gravity
+		wg.Wait()
 
-			dist := math.Hypot(dx, dy)
-			if dist > 0 {
-				limited := math.Min(dist, temperature)
-				v.x += (dx / dist) * limited
-				v.y += (dy / dist) * limited
+		// Update positions
+		for i, node := range nodeList {
+			force := forces[i]
+			vel := &velocities[i]
+
+			// Update velocity with damping
+			vel[0] = (vel[0] + force[0]*timestep) * damping
+			vel[1] = (vel[1] + force[1]*timestep) * damping
+
+			// Velocity limiting
+			maxVel := 50.0
+			if math.Abs(vel[0]) > maxVel {
+				vel[0] = maxVel * math.Copysign(1, vel[0])
 			}
+			if math.Abs(vel[1]) > maxVel {
+				vel[1] = maxVel * math.Copysign(1, vel[1])
+			}
+
+			// Update position
+			newX := float64(node.X) + vel[0]
+			newY := float64(node.Y) + vel[1]
+
+			// Soft circular boundary
+			maxRadius := float64(width/2 - 200)
+			currentRadius := math.Sqrt(newX*newX + newY*newY)
+			if currentRadius > maxRadius {
+				scale := maxRadius / currentRadius * 0.98
+				newX *= scale
+				newY *= scale
+				// Reduce velocity when hitting boundary
+				vel[0] *= 0.5
+				vel[1] *= 0.5
+			}
+
+			node.X = int(newX)
+			node.Y = int(newY)
 		}
 
-		temperature *= 0.95
-	}
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-func RunSFDP(dotFile string, outputFile string) error {
-	cmd := exec.Command("sfdp", "-Tplain", dotFile)
-	output, err := cmd.Output()
-	if err != nil {
-		return err
-	}
-	return os.WriteFile(outputFile, output, 0644)
-}
-
-func AssignCoordinatesWeighted(pages map[string]*Page) {
-	// Group pages by layer
-	layerMap := make(map[int][]*Page)
-	maxLevel := 0
-	for _, p := range pages {
-		layerMap[p.level] = append(layerMap[p.level], p)
-		if p.level > maxLevel {
-			maxLevel = p.level
-		}
-	}
-
-	const layerSpacingX = 150.0
-	const baseNodeHeight = 10.0
-	const nodeVerticalGap = 5.0
-
-	for level := 0; level <= maxLevel; level++ {
-		layer := layerMap[level]
-
-		// Sort nodes by weight descending (or customize your own heuristic)
-		sort.Slice(layer, func(i, j int) bool {
-			return layer[i].weight > layer[j].weight
-		})
-
-		// Total "height" occupied by all nodes (weight-based)
-		totalHeight := 0.0
-		for _, p := range layer {
-			// space required by node = base height * weight + gap
-			totalHeight += float64(p.weight)*baseNodeHeight + nodeVerticalGap
-		}
-
-		// Start y offset so layer is vertically centered at y=0
-		yOffset := -totalHeight / 2
-
-		// Assign positions
-		currY := yOffset
-		for i, p := range layer {
-			// Position X is layer * spacing plus jitter based on index to spread horizontally a bit
-			p.x = float64(level)*layerSpacingX + float64(i%5)*10 // jitter up to 50 px horizontally
-
-			// Position Y is current y + half node height to center
-			nodeHeight := float64(p.weight)*baseNodeHeight + nodeVerticalGap
-			p.y = currY + nodeHeight/2
-			currY += nodeHeight
+		// Progress indication for long runs
+		if iter%10 == 0 && iter > 0 {
+			// You could add logging here if needed
+			// fmt.Printf("Layout iteration %d/%d completed\n", iter, iterations)
 		}
 	}
 }

@@ -1,60 +1,37 @@
 package main
 
-func PreprocessPages(pages map[string]*Page) map[string]*Page {
-	titleMap := make(map[string]*Page)  // title -> main page
-	duplicates := make(map[*Page]*Page) // old -> merged into
+import (
+	"fmt"
+	"net/http"
+	"net/url"
+)
 
-	// Step 1: Choose representative for each title (skip empty titles)
-	for _, page := range pages {
-		if page.title == "" {
-			continue
-		}
-		if _, exists := titleMap[page.title]; !exists {
-			titleMap[page.title] = page
-		} else {
-			duplicates[page] = titleMap[page.title]
-		}
+func CheckResponse(resp *http.Response) error {
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("failed to fetch page: %s", resp.Status)
 	}
 
-	// Step 2: Merge duplicate pages into the representative
-	for oldPage, mainPage := range duplicates {
-		// Merge in-links
-		for _, in := range oldPage.in {
-			if in == mainPage {
-				continue
-			}
-			mainPage.in = append(mainPage.in, in)
-			// Update in.out references
-			for i, out := range in.out {
-				if out == oldPage {
-					in.out[i] = mainPage
-				}
-			}
-		}
-		// Merge out-links
-		for _, out := range oldPage.out {
-			if out == mainPage {
-				continue
-			}
-			mainPage.out = append(mainPage.out, out)
-			// Update out.in references
-			for i, in := range out.in {
-				if in == oldPage {
-					out.in[i] = mainPage
-				}
-			}
-		}
-		// Merge weight (optional)
-		mainPage.weight += oldPage.weight
+	if ct := resp.Header.Get("Content-Type"); ct == "" || ct[:9] != "text/html" {
+		return fmt.Errorf("invalid content type: %s", resp.Header.Get("Content-Type"))
 	}
 
-	// Step 3: Build new cleaned map
-	cleaned := make(map[string]*Page)
-	for link, page := range pages {
-		if _, isDuplicate := duplicates[page]; !isDuplicate {
-			cleaned[link] = page
-		}
+	return nil
+}
+
+func PreprocessLinks(links []string, base string) ([]string, error) {
+	baseURL, err := url.Parse(base)
+	if err != nil {
+		return nil, err
 	}
 
-	return cleaned
+	var validLinks []string
+	for _, link := range links {
+		parsed, err := url.Parse(link)
+		if err != nil {
+			return nil, fmt.Errorf("invalid URL: %s", link)
+		}
+		resolved := baseURL.ResolveReference(parsed)
+		validLinks = append(validLinks, resolved.String())
+	}
+	return validLinks, nil
 }
