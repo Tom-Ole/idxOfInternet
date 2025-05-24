@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+)
 
 func (g *Graph) PrintGraph() {
 	for _, node := range g.Nodes {
@@ -28,4 +32,30 @@ func (g *Graph) Count() int {
 
 func (g *Graph) CountClusters() int {
 	return len(g.Clusters)
+}
+
+func SaveGraphToFile(g *Graph, filename string) error {
+	data, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return fmt.Errorf("failed to marshal graph: %w", err)
+	}
+
+	err = os.WriteFile(filename, data, 0644)
+	if err != nil {
+		return fmt.Errorf("failed to write graph to file: %w", err)
+	}
+	return nil
+}
+
+func LoadGraphFromFile(filename string) (*Graph, error) {
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read graph from file: %w", err)
+	}
+	var g Graph
+	err = json.Unmarshal(data, &g)
+	if err != nil {
+		return nil, fmt.Errorf("failed to unmarshal graph: %w", err)
+	}
+	return &g, nil
 }

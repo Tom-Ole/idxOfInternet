@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 type NodeID int
@@ -129,6 +130,7 @@ func createGraph() *Graph {
 
 func main() {
 
+	startTime := time.Now()
 	initialLink := "https://go.dev/"
 	depth := 2
 	graph := createGraph()
@@ -184,6 +186,9 @@ func main() {
 			http.Error(w, "Failed to encode graph", http.StatusInternalServerError)
 		}
 	})
+
+	endTime := time.Now()
+	fmt.Printf("Graph created in %s\n", endTime.Sub(startTime))
 	fmt.Println("Server started at :8080")
 	http.ListenAndServe(":8080", nil)
 
