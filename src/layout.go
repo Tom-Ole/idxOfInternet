@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	"math/rand/v2"
 )
@@ -12,6 +13,8 @@ func randFloat64() float64 {
 
 // CreateLayout creates a force-directed layout optimized for 250k+ nodes
 func (g *Graph) CreateLayout() {
+
+	fmt.Printf("Creating layout for %d nodes and %d clusters...\n", len(g.Nodes), len(g.Clusters))
 
 	// Calculate the radius and center of the cluster
 	for _, cluster := range g.Clusters {

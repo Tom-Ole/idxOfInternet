@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"sync"
 	"time"
 )
 
@@ -40,9 +41,14 @@ type Graph struct {
 
 	nextNodeID NodeID
 	nextEdgeID EdgeID
+
+	mu sync.Mutex
 }
 
 func (g *Graph) AddNode(link string, x float64, y float64, weight int) NodeID {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+
 	id := g.nextNodeID
 	g.nextNodeID++
 	g.Nodes[id] = &Node{
@@ -57,6 +63,9 @@ func (g *Graph) AddNode(link string, x float64, y float64, weight int) NodeID {
 }
 
 func (g *Graph) AddEdge(from NodeID, to NodeID) EdgeID {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+
 	id := g.nextEdgeID
 	g.nextEdgeID++
 	g.Edges[id] = &Edge{
@@ -133,14 +142,15 @@ func main() {
 	startTime := time.Now()
 	initialLink := "https://go.dev/"
 
-	depth := 3
+	depth := 5
 
 	graph := createGraph()
 	loadFromFile := false
 	if !loadFromFile {
 		// recursive function to parse the initial Page and there links with given depth.
 		fmt.Printf("Parsing page: %s with depth: %d\n", initialLink, depth)
-		ParsePage(initialLink, depth, graph)
+		//ParsePage(initialLink, depth, graph)
+		ParsePageConcurrently(initialLink, depth, graph)
 
 		graph.CalculateWeight()
 

@@ -67,7 +67,7 @@ func LoadGraphFromFile(filename string) (*Graph, error) {
 }
 
 func PrintInfo(format string, a ...any) {
-	shouldPrintInfo := false
+	shouldPrintInfo := true
 	if shouldPrintInfo {
 		fmt.Printf(format, a...)
 	}
