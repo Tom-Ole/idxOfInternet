@@ -188,9 +188,3 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 
 }
-
-// I need a layout algorithm that can handle 250k+ nodes.
-// The layout should take clusters into account and should be optimized for performance.
-// The layout should also be able to handle a large number of edges.
-// The layout should look natural and not have overlapping nodes and no grid.
-// I want a clear seperation between clusters.
