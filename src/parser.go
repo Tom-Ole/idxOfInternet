@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -49,7 +48,7 @@ func GetLinks(link string) ([]string, error) {
 		return nil, err
 	}
 
-	fmt.Printf("Found %d valid links for %s\n", len(processedLinks), link)
+	PrintInfo("Found %d valid links for %s\n", len(processedLinks), link)
 
 	return processedLinks, nil
 

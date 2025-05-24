@@ -7,7 +7,7 @@ func ParsePage(link string, depth int, graph *Graph) {
 		return
 	}
 
-	fmt.Printf("Depth: %d -- Parsing page: %s\n", depth, link)
+	PrintInfo("Depth: %d -- Parsing page: %s\n", depth, link)
 
 	links, err := GetLinks(link)
 	if err != nil {

@@ -136,6 +136,6 @@ func (g *Graph) CreateLayout() {
 		}
 	}
 
-	g.PrintClusters()
+	//g.PrintClusters()
 
 }

@@ -65,3 +65,10 @@ func LoadGraphFromFile(filename string) (*Graph, error) {
 
 	return &g, nil
 }
+
+func PrintInfo(format string, a ...any) {
+	shouldPrintInfo := false
+	if shouldPrintInfo {
+		fmt.Printf(format, a...)
+	}
+}
