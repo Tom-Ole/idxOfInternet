@@ -4,17 +4,19 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"sync"
+	"time"
 )
 
-type NodeID uint32
-type EdgeID uint32
+type NodeID int
+type EdgeID int
 
 type Node struct {
 	ID      NodeID   `json:"id"`
 	Link    string   `json:"link"`
-	X       int      `json:"x"`
-	Y       int      `json:"y"`
-	Weight  uint32   `json:"weight"`
+	X       float64  `json:"x"`
+	Y       float64  `json:"y"`
+	Weight  int      `json:"weight"`
 	EdgeIDs []EdgeID `json:"edge_ids"`
 }
 
@@ -27,6 +29,9 @@ type Edge struct {
 type Cluster struct {
 	ID      int
 	NodeIDs []NodeID
+	Radius  float64
+	CenterX float64
+	CenterY float64
 }
 
 type Graph struct {
@@ -36,9 +41,14 @@ type Graph struct {
 
 	nextNodeID NodeID
 	nextEdgeID EdgeID
+
+	mu sync.Mutex
 }
 
-func (g *Graph) AddNode(link string, x int, y int, weight uint32) NodeID {
+func (g *Graph) AddNode(link string, x float64, y float64, weight int) NodeID {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+
 	id := g.nextNodeID
 	g.nextNodeID++
 	g.Nodes[id] = &Node{
@@ -53,6 +63,9 @@ func (g *Graph) AddNode(link string, x int, y int, weight uint32) NodeID {
 }
 
 func (g *Graph) AddEdge(from NodeID, to NodeID) EdgeID {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+
 	id := g.nextEdgeID
 	g.nextEdgeID++
 	g.Edges[id] = &Edge{
@@ -110,32 +123,10 @@ func (g *Graph) ClusterByConnectivity() {
 	}
 }
 
-func (g *Graph) PrintGraph() {
+func (g *Graph) CalculateWeight() {
 	for _, node := range g.Nodes {
-		fmt.Printf("Node %d: %s\n", node.ID, node.Link)
-		for _, edgeID := range node.EdgeIDs {
-			edge := g.Edges[edgeID]
-			fmt.Printf("  Edge to Node %d\n", edge.To)
-		}
+		node.Weight = max(int(len(node.EdgeIDs)), 1)
 	}
-}
-
-func (g *Graph) PrintClusters() {
-	for _, cluster := range g.Clusters {
-		fmt.Printf("Cluster %d: ", cluster.ID)
-		for _, nodeID := range cluster.NodeIDs {
-			fmt.Printf("%d ", nodeID)
-		}
-		fmt.Println()
-	}
-}
-
-func (g *Graph) Count() int {
-	return len(g.Nodes)
-}
-
-func (g *Graph) CountClusters() int {
-	return len(g.Clusters)
 }
 
 func createGraph() *Graph {
@@ -148,24 +139,47 @@ func createGraph() *Graph {
 
 func main() {
 
+	startTime := time.Now()
 	initialLink := "https://go.dev/"
-	depth := 2
+
+	depth := 5
+
 	graph := createGraph()
+	loadFromFile := false
+	if !loadFromFile {
+		// recursive function to parse the initial Page and there links with given depth.
+		fmt.Printf("Parsing page: %s with depth: %d\n", initialLink, depth)
+		//ParsePage(initialLink, depth, graph)
+		ParsePageConcurrently(initialLink, depth, graph)
 
-	// recursive function to parse the initial Page and there links with given depth.
-	ParsePage(initialLink, depth, graph)
+		graph.CalculateWeight()
 
-	// Create clusters based on domain or connectivity
-	graph.ClusterByDomain()
-	// graph.ClusterByConnectivity()
+		//graph.PrintGraph()
 
+		// Create clusters based on domain or connectivity
+		graph.ClusterByDomain()
+		// graph.ClusterByConnectivity()
+		SaveGraphToFile(graph, "graph.json")
+
+	} else {
+		fileGraph, err := LoadGraphFromFile("graph.json")
+		if err != nil {
+			fmt.Printf("Error loading graph from file: %v\n", err)
+			return
+		}
+		graph = fileGraph
+	}
+
+	fmt.Printf("=================================== \n")
 	fmt.Printf("Total nodes: %d\n", graph.Count())
 	fmt.Printf("Total clusters: %d\n", graph.CountClusters())
+	fmt.Printf("=================================== \n")
 
 	// Create layout to visualize the graph on a vanilla HTML/CSS/JS Frontend with DECK.gl
 	graph.CreateLayout()
 
 	// Open a server and serve the graph to the frontend
+
 	http.HandleFunc("/graph", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
@@ -197,7 +211,10 @@ func main() {
 			http.Error(w, "Failed to encode graph", http.StatusInternalServerError)
 		}
 	})
-	http.ListenAndServe(":8080", nil)
+
+	endTime := time.Now()
+	fmt.Printf("Graph created in %s\n", endTime.Sub(startTime))
 	fmt.Println("Server started at :8080")
+	http.ListenAndServe(":8080", nil)
 
 }

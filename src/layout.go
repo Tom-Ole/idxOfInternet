@@ -1,255 +1,144 @@
 package main
 
 import (
+	"fmt"
 	"math"
-	"runtime"
-	"sync"
+	"math/rand/v2"
 )
+
+func randFloat64() float64 {
+	// return a randome float64 between -1 and 1
+	return (rand.Float64() * 2) - 1
+}
 
 // CreateLayout creates a force-directed layout optimized for 250k+ nodes
 func (g *Graph) CreateLayout() {
+
+	fmt.Printf("Creating layout for %d nodes and %d clusters...\n", len(g.Nodes), len(g.Clusters))
+
+	// Calculate the radius and center of the cluster
+	for _, cluster := range g.Clusters {
+		cluster.Radius = 0
+		cluster.CenterX = 1
+		cluster.CenterY = 1
+		for _, nodeID := range cluster.NodeIDs {
+			cluster.Radius += float64(g.Nodes[nodeID].Weight)
+			node := g.Nodes[nodeID]
+			cluster.CenterX += node.X * randFloat64()
+			cluster.CenterY += node.Y * randFloat64()
+
+		}
+		cluster.CenterX /= float64(len(cluster.NodeIDs))
+		cluster.CenterY /= float64(len(cluster.NodeIDs))
+	}
+
+	// Layout all clusters to each other with a force-directed layout
 	const (
-		iterations     = 50         // Reduced for performance
-		width, height  = 4000, 4000 // Larger space for more nodes
-		repulsionConst = 100000.0
-		centeringForce = 0.0005
-		damping        = 0.8
-		timestep       = 1.0
-		gridSize       = 200   // Spatial partitioning grid
-		maxInfluence   = 400.0 // Max distance for force calculation
+		padding       = 75
+		iterations    = 100
+		forceStrength = 0.1 // scale the force
 	)
 
-	nodeCount := len(g.Nodes)
-	if nodeCount == 0 {
-		return
-	}
+	for range iterations {
+		for idA, clusterA := range g.Clusters {
+			for idB, clusterB := range g.Clusters {
+				if idA >= idB {
+					continue // avoid duplicate pairs and self-comparison
+				}
+				dx := clusterB.CenterX - clusterA.CenterX
+				dy := clusterB.CenterY - clusterA.CenterY
+				dist := math.Hypot(dx, dy)
+				minDist := float64(clusterA.Radius + clusterB.Radius + padding)
 
-	// Initialize positions in a circle to avoid edge clustering
-	nodeList := make([]*Node, 0, nodeCount)
-	velocities := make([][2]float64, nodeCount)
+				if dist < minDist && dist > 0.001 {
+					nx := dx / dist
+					ny := dy / dist
+					force := (minDist - dist) * forceStrength
+					moveX := nx * force
+					moveY := ny * force
 
-	i := 0
-	for _, node := range g.Nodes {
-		// Distribute nodes in concentric circles
-		layer := int(math.Sqrt(float64(i)))
-		angle := float64(i-layer*layer) * 2.0 * math.Pi / float64(2*layer+1)
-		if layer == 0 {
-			angle = 0
-		}
-		radius := float64(layer)*30.0 + 50.0
-
-		node.X = int(radius * math.Cos(angle))
-		node.Y = int(radius * math.Sin(angle))
-		nodeList = append(nodeList, node)
-		velocities[i] = [2]float64{0, 0}
-		i++
-	}
-
-	// Spatial grid for optimization
-	type GridCell struct {
-		nodes   []int // indices into nodeList
-		centerX float64
-		centerY float64
-		mass    float64
-	}
-
-	gridCols := int(width / gridSize)
-	gridRows := int(height / gridSize)
-
-	// Determine number of workers based on CPU cores
-	numWorkers := runtime.NumCPU()
-	if numWorkers > 8 {
-		numWorkers = 8 // Diminishing returns beyond 8 cores for this workload
-	}
-
-	for iter := 0; iter < iterations; iter++ {
-		// Create spatial grid
-		grid := make([][]GridCell, gridRows)
-		for row := range grid {
-			grid[row] = make([]GridCell, gridCols)
-		}
-
-		// Populate grid
-		for idx, node := range nodeList {
-			gridX := int((float64(node.X) + width/2) / gridSize)
-			gridY := int((float64(node.Y) + height/2) / gridSize)
-
-			// Clamp to grid bounds
-			if gridX < 0 {
-				gridX = 0
-			}
-			if gridX >= gridCols {
-				gridX = gridCols - 1
-			}
-			if gridY < 0 {
-				gridY = 0
-			}
-			if gridY >= gridRows {
-				gridY = gridRows - 1
-			}
-
-			cell := &grid[gridY][gridX]
-			cell.nodes = append(cell.nodes, idx)
-			cell.centerX += float64(node.X)
-			cell.centerY += float64(node.Y)
-			cell.mass += 1.0
-		}
-
-		// Calculate cell centers
-		for row := range grid {
-			for col := range grid[row] {
-				cell := &grid[row][col]
-				if cell.mass > 0 {
-					cell.centerX /= cell.mass
-					cell.centerY /= cell.mass
+					clusterA.CenterX -= moveX
+					clusterA.CenterY -= moveY
+					clusterB.CenterX += moveX
+					clusterB.CenterY += moveY
 				}
 			}
 		}
+	}
 
-		// Calculate forces in parallel
-		forces := make([][2]float64, nodeCount)
-		var wg sync.WaitGroup
+	// Layout all nodes inside the clusters so all nodes spread out evenly inside the radius of the cluster not just around
+	const (
+		nodeIterations = 50  // adjust for quality/performance tradeoff
+		repelStrength  = 0.5 // tweak to control repulsion distance
+		boundStrength  = 0.1 // pullback force toward center
+	)
 
-		chunkSize := nodeCount / numWorkers
-		if chunkSize < 100 {
-			chunkSize = 100
+	for _, cluster := range g.Clusters {
+		nodes := make([]*Node, len(cluster.NodeIDs))
+		radii := make([]float64, len(cluster.NodeIDs))
+		for i, id := range cluster.NodeIDs {
+			nodes[i] = g.Nodes[id]
+			radii[i] = math.Sqrt(float64(nodes[i].Weight))*2 + 1
+
+			// Initial position: random within cluster radius
+			angle := randFloat64() * math.Pi * 2
+			dist := randFloat64() * cluster.Radius * 0.8 // stay inside
+			nodes[i].X = cluster.CenterX + dist*math.Cos(angle)
+			nodes[i].Y = cluster.CenterY + dist*math.Sin(angle)
 		}
 
-		for start := 0; start < nodeCount; start += chunkSize {
-			end := start + chunkSize
-			if end > nodeCount {
-				end = nodeCount
-			}
+		// Mini force-directed simulation
+		for iter := 0; iter < nodeIterations; iter++ {
+			for i := 0; i < len(nodes); i++ {
+				ni := nodes[i]
+				r1 := radii[i]
+				fx, fy := 0.0, 0.0
 
-			wg.Add(1)
-			go func(startIdx, endIdx int) {
-				defer wg.Done()
-
-				for i := startIdx; i < endIdx; i++ {
-					node := nodeList[i]
-					x1 := float64(node.X)
-					y1 := float64(node.Y)
-					fx, fy := 0.0, 0.0
-
-					// Get grid position
-					gridX := int((x1 + width/2) / gridSize)
-					gridY := int((y1 + height/2) / gridSize)
-
-					// Check surrounding cells (3x3 neighborhood)
-					for dy := -1; dy <= 1; dy++ {
-						for dx := -1; dx <= 1; dx++ {
-							checkX := gridX + dx
-							checkY := gridY + dy
-
-							if checkX < 0 || checkX >= gridCols || checkY < 0 || checkY >= gridRows {
-								continue
-							}
-
-							cell := &grid[checkY][checkX]
-							if len(cell.nodes) == 0 {
-								continue
-							}
-
-							if dx == 0 && dy == 0 {
-								// Same cell - calculate individual repulsions
-								for _, otherIdx := range cell.nodes {
-									if otherIdx == i {
-										continue
-									}
-
-									other := nodeList[otherIdx]
-									x2 := float64(other.X)
-									y2 := float64(other.Y)
-									dx := x1 - x2
-									dy := y1 - y2
-									distSq := dx*dx + dy*dy + 1.0
-
-									if distSq > maxInfluence*maxInfluence {
-										continue
-									}
-
-									force := repulsionConst / distSq
-									dist := math.Sqrt(distSq)
-									fx += (dx / dist) * force
-									fy += (dy / dist) * force
-								}
-							} else {
-								// Distant cell - use center of mass approximation
-								if cell.mass > 0 {
-									dx := x1 - cell.centerX
-									dy := y1 - cell.centerY
-									distSq := dx*dx + dy*dy + 1.0
-
-									if distSq > maxInfluence*maxInfluence {
-										continue
-									}
-
-									force := repulsionConst * cell.mass / distSq
-									dist := math.Sqrt(distSq)
-									fx += (dx / dist) * force
-									fy += (dy / dist) * force
-								}
-							}
-						}
+				// Repel from other nodes
+				for j := 0; j < len(nodes); j++ {
+					if i == j {
+						continue
 					}
+					nj := nodes[j]
+					r2 := radii[j]
 
-					// Centering force
-					centerDist := math.Sqrt(x1*x1 + y1*y1)
-					if centerDist > 1.0 {
-						centerForceStrength := centeringForce * centerDist
-						fx -= (x1 / centerDist) * centerForceStrength
-						fy -= (y1 / centerDist) * centerForceStrength
+					dx := ni.X - nj.X
+					dy := ni.Y - nj.Y
+					dist := math.Hypot(dx, dy)
+					minDist := r1 + r2
+
+					if dist < minDist && dist > 0.01 {
+						// Normalize
+						nx := dx / dist
+						ny := dy / dist
+						force := (minDist - dist) * repelStrength
+
+						fx += nx * force
+						fy += ny * force
 					}
-
-					forces[i] = [2]float64{fx, fy}
 				}
-			}(start, end)
-		}
 
-		wg.Wait()
+				// Pull back inside the cluster circle
+				cdx := ni.X - cluster.CenterX
+				cdy := ni.Y - cluster.CenterY
+				cd := math.Hypot(cdx, cdy)
+				maxDist := cluster.Radius - r1
 
-		// Update positions
-		for i, node := range nodeList {
-			force := forces[i]
-			vel := &velocities[i]
+				if cd > maxDist && cd > 0.01 {
+					// Outside boundary, pull back in
+					nx := cdx / cd
+					ny := cdy / cd
+					fx -= nx * (cd - maxDist) * boundStrength
+					fy -= ny * (cd - maxDist) * boundStrength
+				}
 
-			// Update velocity with damping
-			vel[0] = (vel[0] + force[0]*timestep) * damping
-			vel[1] = (vel[1] + force[1]*timestep) * damping
-
-			// Velocity limiting
-			maxVel := 50.0
-			if math.Abs(vel[0]) > maxVel {
-				vel[0] = maxVel * math.Copysign(1, vel[0])
+				// Apply forces
+				ni.X += fx
+				ni.Y += fy
 			}
-			if math.Abs(vel[1]) > maxVel {
-				vel[1] = maxVel * math.Copysign(1, vel[1])
-			}
-
-			// Update position
-			newX := float64(node.X) + vel[0]
-			newY := float64(node.Y) + vel[1]
-
-			// Soft circular boundary
-			maxRadius := float64(width/2 - 200)
-			currentRadius := math.Sqrt(newX*newX + newY*newY)
-			if currentRadius > maxRadius {
-				scale := maxRadius / currentRadius * 0.98
-				newX *= scale
-				newY *= scale
-				// Reduce velocity when hitting boundary
-				vel[0] *= 0.5
-				vel[1] *= 0.5
-			}
-
-			node.X = int(newX)
-			node.Y = int(newY)
-		}
-
-		// Progress indication for long runs
-		if iter%10 == 0 && iter > 0 {
-			// You could add logging here if needed
-			// fmt.Printf("Layout iteration %d/%d completed\n", iter, iterations)
 		}
 	}
+
+	//g.PrintClusters()
+
 }

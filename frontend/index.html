@@ -101,7 +101,7 @@
                         id: 'nodes',
                         data: nodes,
                         getPosition: d => d.position,
-                        getRadius: d => Math.sqrt(d.weight) * 5,
+                        getRadius: d => Math.sqrt(d.weight) * 2 + 1,
                         getFillColor: [255, 140, 0],
                         pickable: true,
                         radiusMinPixels: 2,
