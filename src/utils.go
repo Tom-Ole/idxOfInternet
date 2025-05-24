@@ -44,6 +44,9 @@ func SaveGraphToFile(g *Graph, filename string) error {
 	if err != nil {
 		return fmt.Errorf("failed to write graph to file: %w", err)
 	}
+
+	fmt.Printf("Graph saved to file %s\n", filename)
+
 	return nil
 }
 
@@ -57,5 +60,8 @@ func LoadGraphFromFile(filename string) (*Graph, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to unmarshal graph: %w", err)
 	}
+
+	fmt.Printf("Loaded graph from file: %s\n", filename)
+
 	return &g, nil
 }

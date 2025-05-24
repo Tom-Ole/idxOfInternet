@@ -134,16 +134,26 @@ func main() {
 	initialLink := "https://go.dev/"
 	depth := 2
 	graph := createGraph()
+	loadFromFile := false
+	if loadFromFile {
+		// recursive function to parse the initial Page and there links with given depth.
+		ParsePage(initialLink, depth, graph)
 
-	// recursive function to parse the initial Page and there links with given depth.
-	ParsePage(initialLink, depth, graph)
+		graph.CalculateWeight()
+		graph.PrintGraph()
 
-	graph.CalculateWeight()
-	graph.PrintGraph()
-
-	// Create clusters based on domain or connectivity
-	graph.ClusterByDomain()
-	// graph.ClusterByConnectivity()
+		// Create clusters based on domain or connectivity
+		graph.ClusterByDomain()
+		// graph.ClusterByConnectivity()
+		SaveGraphToFile(graph, "graph.json")
+	} else {
+		fileGraph, err := LoadGraphFromFile("graph.json")
+		if err != nil {
+			fmt.Printf("Error loading graph from file: %v\n", err)
+			return
+		}
+		graph = fileGraph
+	}
 
 	fmt.Printf("=================================== \n")
 	fmt.Printf("Total nodes: %d\n", graph.Count())
