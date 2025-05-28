@@ -18,7 +18,7 @@ func (g *Graph) PrintGraph() {
 
 func (g *Graph) PrintClusters() {
 	for _, cluster := range g.Clusters {
-		fmt.Printf("Cluster %d (x: %f, y: %f, r: %d): ", cluster.ID, cluster.CenterX, cluster.CenterY, cluster.Radius)
+		fmt.Printf("Cluster %d (x: %f, y: %f, r: %f): ", cluster.ID, cluster.CenterX, cluster.CenterY, cluster.Radius)
 		for _, nodeID := range cluster.NodeIDs {
 			fmt.Printf("%d ", nodeID)
 		}

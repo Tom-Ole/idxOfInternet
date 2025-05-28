@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/rand/v2"
+	"sync"
 )
 
 func randFloat64() float64 {
@@ -36,7 +37,7 @@ func (g *Graph) CreateLayout() {
 	const (
 		padding       = 75
 		iterations    = 100
-		forceStrength = 0.1 // scale the force
+		forceStrength = 0.1
 	)
 
 	for range iterations {
@@ -68,76 +69,90 @@ func (g *Graph) CreateLayout() {
 
 	// Layout all nodes inside the clusters so all nodes spread out evenly inside the radius of the cluster not just around
 	const (
-		nodeIterations = 50  // adjust for quality/performance tradeoff
-		repelStrength  = 0.5 // tweak to control repulsion distance
-		boundStrength  = 0.1 // pullback force toward center
+		nodeIterations = 50
+		repelStrength  = 0.5
+		boundStrength  = 0.1
 	)
 
+	var wg sync.WaitGroup
+
 	for _, cluster := range g.Clusters {
-		nodes := make([]*Node, len(cluster.NodeIDs))
-		radii := make([]float64, len(cluster.NodeIDs))
-		for i, id := range cluster.NodeIDs {
-			nodes[i] = g.Nodes[id]
-			radii[i] = math.Sqrt(float64(nodes[i].Weight))*2 + 1
 
-			// Initial position: random within cluster radius
-			angle := randFloat64() * math.Pi * 2
-			dist := randFloat64() * cluster.Radius * 0.8 // stay inside
-			nodes[i].X = cluster.CenterX + dist*math.Cos(angle)
-			nodes[i].Y = cluster.CenterY + dist*math.Sin(angle)
+		if len(cluster.NodeIDs) <= 1 {
+			continue
 		}
 
-		// Mini force-directed simulation
-		for iter := 0; iter < nodeIterations; iter++ {
-			for i := 0; i < len(nodes); i++ {
-				ni := nodes[i]
-				r1 := radii[i]
-				fx, fy := 0.0, 0.0
+		wg.Add(1)
+		go func(cluster *Cluster) {
+			defer wg.Done()
 
-				// Repel from other nodes
-				for j := 0; j < len(nodes); j++ {
-					if i == j {
-						continue
-					}
-					nj := nodes[j]
-					r2 := radii[j]
+			nodes := make([]*Node, len(cluster.NodeIDs))
+			radii := make([]float64, len(cluster.NodeIDs))
+			for i, id := range cluster.NodeIDs {
+				nodes[i] = g.Nodes[id]
+				radii[i] = math.Sqrt(float64(nodes[i].Weight))*2 + 1
 
-					dx := ni.X - nj.X
-					dy := ni.Y - nj.Y
-					dist := math.Hypot(dx, dy)
-					minDist := r1 + r2
-
-					if dist < minDist && dist > 0.01 {
-						// Normalize
-						nx := dx / dist
-						ny := dy / dist
-						force := (minDist - dist) * repelStrength
-
-						fx += nx * force
-						fy += ny * force
-					}
-				}
-
-				// Pull back inside the cluster circle
-				cdx := ni.X - cluster.CenterX
-				cdy := ni.Y - cluster.CenterY
-				cd := math.Hypot(cdx, cdy)
-				maxDist := cluster.Radius - r1
-
-				if cd > maxDist && cd > 0.01 {
-					// Outside boundary, pull back in
-					nx := cdx / cd
-					ny := cdy / cd
-					fx -= nx * (cd - maxDist) * boundStrength
-					fy -= ny * (cd - maxDist) * boundStrength
-				}
-
-				// Apply forces
-				ni.X += fx
-				ni.Y += fy
+				// Initial position: random within cluster radius
+				angle := randFloat64() * math.Pi * 2
+				dist := randFloat64() * cluster.Radius * 0.8 // stay inside
+				nodes[i].X = cluster.CenterX + dist*math.Cos(angle)
+				nodes[i].Y = cluster.CenterY + dist*math.Sin(angle)
 			}
-		}
+
+			// Mini force-directed simulation
+			for iter := 0; iter < nodeIterations; iter++ {
+				for i := 0; i < len(nodes); i++ {
+					ni := nodes[i]
+					r1 := radii[i]
+					fx, fy := 0.0, 0.0
+
+					// Repel from other nodes
+					for j := 0; j < len(nodes); j++ {
+						if i == j {
+							continue
+						}
+						nj := nodes[j]
+						r2 := radii[j]
+
+						dx := ni.X - nj.X
+						dy := ni.Y - nj.Y
+						dist := math.Hypot(dx, dy)
+						minDist := r1 + r2
+
+						if dist < minDist && dist > 0.01 {
+							// Normalize
+							nx := dx / dist
+							ny := dy / dist
+							force := (minDist - dist) * repelStrength
+
+							fx += nx * force
+							fy += ny * force
+						}
+					}
+
+					// Pull back inside the cluster circle
+					cdx := ni.X - cluster.CenterX
+					cdy := ni.Y - cluster.CenterY
+					cd := math.Hypot(cdx, cdy)
+					maxDist := cluster.Radius - r1
+
+					if cd > maxDist && cd > 0.01 {
+						// Outside boundary, pull back in
+						nx := cdx / cd
+						ny := cdy / cd
+						fx -= nx * (cd - maxDist) * boundStrength
+						fy -= ny * (cd - maxDist) * boundStrength
+					}
+
+					// Apply forces
+					ni.X += fx
+					ni.Y += fy
+				}
+			}
+		}(cluster)
 	}
+
+	wg.Wait()
 
 	//g.PrintClusters()
 

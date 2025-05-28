@@ -142,10 +142,10 @@ func main() {
 	startTime := time.Now()
 	initialLink := "https://go.dev/"
 
-	depth := 5
+	depth := 3
 
 	graph := createGraph()
-	loadFromFile := false
+	loadFromFile := true
 	if !loadFromFile {
 		// recursive function to parse the initial Page and there links with given depth.
 		fmt.Printf("Parsing page: %s with depth: %d\n", initialLink, depth)
@@ -157,8 +157,18 @@ func main() {
 		//graph.PrintGraph()
 
 		// Create clusters based on domain or connectivity
-		graph.ClusterByDomain()
-		// graph.ClusterByConnectivity()
+		//graph.ClusterByDomain()
+		graph.ClusterByConnectivity()
+
+		fmt.Printf("=================================== \n")
+		fmt.Printf("Total nodes: %d\n", graph.Count())
+		fmt.Printf("Total clusters: %d\n", graph.CountClusters())
+		fmt.Printf("=================================== \n")
+
+		// Create layout to visualize the graph on a vanilla HTML/CSS/JS Frontend with DECK.gl
+		graph.CreateLayout()
+
+		// Save the graph to a file
 		SaveGraphToFile(graph, "graph.json")
 
 	} else {
@@ -168,15 +178,12 @@ func main() {
 			return
 		}
 		graph = fileGraph
+
+		fmt.Printf("=================================== \n")
+		fmt.Printf("Total nodes: %d\n", graph.Count())
+		fmt.Printf("Total clusters: %d\n", graph.CountClusters())
+		fmt.Printf("=================================== \n")
 	}
-
-	fmt.Printf("=================================== \n")
-	fmt.Printf("Total nodes: %d\n", graph.Count())
-	fmt.Printf("Total clusters: %d\n", graph.CountClusters())
-	fmt.Printf("=================================== \n")
-
-	// Create layout to visualize the graph on a vanilla HTML/CSS/JS Frontend with DECK.gl
-	graph.CreateLayout()
 
 	// Open a server and serve the graph to the frontend
 
